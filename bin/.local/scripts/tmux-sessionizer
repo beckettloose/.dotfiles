@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~/projects ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+# we are not in tmux AND tmux is not running in background
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    # echo "new session, tmux was not running"
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+# we are not in tmux AND tmux IS running in the background
+if [[ -z $TMUX ]] && [[ $tmux_running -ne 0 ]]; then
+    echo "new session, tmux is in background"
+    
+    # Check if there is already a session
+    if ! tmux has-session -t=$selected 2> /dev/null; then
+        # echo "session does not already exist"
+        tmux new-session -ds $selected_name -c $selected
+    fi
+
+    tmux attach -d -t=$selected_name
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    echo "new session, tmux was already running"
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+echo "tmux switching client"
+tmux switch-client -t $selected_name

@@ -1,0 +1,25 @@
+export XDG_CONFIG_HOME=$HOME/.config
+VIM="nvim"
+
+#PERSONAL=$XDG_CONFIG_HOME/personal
+#source $PERSONAL/env
+#for i in `find -L $PERSONAL`; do
+#	source $i
+#done
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# set up important env vars
+export GIT_EDITOR=$VIM
+#export DOTFILES=$HOME/.dotfiles
+
+#set up our path variable
+path=("$HOME/.local/scripts" $path)
+path=("$HOME/.local/bin" $path)
+
+export PATH
+
+# quick sessionizer shortcut
+bindkey -s ^f "tmux-sessionizer\n"
+
