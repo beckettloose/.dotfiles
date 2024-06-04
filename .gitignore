@@ -3,3 +3,5 @@ bin/.local/bin
 
 nvim/.config/nvim/plugin/packer_compiled.lua
 
+reference/
+
