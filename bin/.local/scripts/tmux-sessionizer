@@ -1,10 +1,24 @@
 #!/usr/bin/env bash
 
+# check if we have an argument
 if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    selected=$(find ~/projects ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+    if [[ $1 -eq 1 ]]; then
+        :
+    fi
+elif [[ -n $TMUX ]]; then
+    tmux neww -n sessionizer "tmux-sessionizer 1"
+    exit 0
 fi
+
+# if we are running from inside tmux, and we didn't already know,
+# make a new window and re-run the command
+
+
+# if [[ $# -eq 1 ]]; then
+#    selected=$1
+#else
+    selected=$(find ~/projects ~/ ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type d | fzf)
+#fi
 
 if [[ -z $selected ]]; then
     exit 0

@@ -42,7 +42,7 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "Q", "<nop>")
 
 -- Open tmux sessionizer
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", '<cmd>silent !tmux neww -n sessionizer "tmux-sessionizer 1"<CR>')
 
 -- Format buffer
 -- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
