@@ -115,6 +115,8 @@ export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
 # Example aliases
 source ~/.zsh_profile
 
+alias vim="nvim"
+alias vi="nvim"
 alias zshconfig="vi ~/.zshrc"
 alias zshprofile="vi ~/.zsh_profile"
 alias ohmyzsh="vi ~/.oh-my-zsh"
