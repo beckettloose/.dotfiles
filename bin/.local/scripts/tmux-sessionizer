@@ -22,10 +22,8 @@ fi
 
 # we are not in tmux AND tmux IS running in the background
 if [[ -z $TMUX ]] && [[ $tmux_running -ne 0 ]]; then
-    echo "new session, tmux is in background"
-    
     # Check if there is already a session
-    if ! tmux has-session -t=$selected 2> /dev/null; then
+    if ! tmux has-session -t=$selected_name 2> /dev/null; then
         # echo "session does not already exist"
         tmux new-session -ds $selected_name -c $selected
     fi
@@ -35,9 +33,7 @@ if [[ -z $TMUX ]] && [[ $tmux_running -ne 0 ]]; then
 fi
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    echo "new session, tmux was already running"
     tmux new-session -ds $selected_name -c $selected
 fi
 
-echo "tmux switching client"
 tmux switch-client -t $selected_name

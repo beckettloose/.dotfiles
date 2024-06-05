@@ -81,6 +81,19 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# Set up our path
+#
+# Homebrew first...
+export PATH="/opt/homebrew/bin:$PATH"
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -110,12 +123,12 @@ alias dl="wget --content-disposition"
 #alias please="sudo"
 #alias starwars="nc towel.blinkenlights.nl 23"
 
-export PATH="/opt/homebrew/bin:$PATH"
+# export PATH="/opt/homebrew/bin:$PATH"
 
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-    autoload -Uz compinit
-    compinit
-fi
-export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+# if type brew &>/dev/null; then
+#     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+#
+#     autoload -Uz compinit
+#     compinit
+# fi
+# export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
