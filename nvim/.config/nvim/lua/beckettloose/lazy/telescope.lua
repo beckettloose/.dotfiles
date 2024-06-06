@@ -81,6 +81,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
         vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
         vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
+        -- search all files in repository
+        vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Search Git Files" })
+
         vim.keymap.set("n", "<leader>x", ":Telescope file_browser<CR>", { desc = "Open File Explorer" })
 
         -- Slightly advanced example of overriding default behavior and theme
