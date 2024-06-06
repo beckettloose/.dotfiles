@@ -1,0 +1,16 @@
+# Mac OS Platform Specific zsh configuration
+#
+# Beckett Loose 2024
+
+# Add Homebrew to path
+export PATH="/opt/homebrew/bin:$PATH"
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+
+# Add tcl-tk to path
+export PATH="usr/local/opt/tcl-tk/bin:$PATH"
