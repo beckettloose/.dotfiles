@@ -4,7 +4,7 @@
 
 -- Enable line numbering
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Indentation Settings
 vim.opt.tabstop = 4
