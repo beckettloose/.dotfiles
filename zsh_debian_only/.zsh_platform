@@ -3,7 +3,6 @@
 # append completions to fpath
 FPATH="${ASDF_DIR}/completions:$FPATH"
 
-
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
 autoload -Uz compinit && compinit

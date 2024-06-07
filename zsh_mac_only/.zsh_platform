@@ -2,6 +2,9 @@
 #
 # Beckett Loose 2024
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # Add Homebrew to path
 export PATH="/opt/homebrew/bin:$PATH"
 

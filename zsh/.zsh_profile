@@ -7,9 +7,6 @@ VIM="nvim"
 #	source $i
 #done
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 # set up important env vars
 export GIT_EDITOR=$VIM
 #export DOTFILES=$HOME/.dotfiles
