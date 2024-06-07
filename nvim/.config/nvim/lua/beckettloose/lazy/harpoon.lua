@@ -7,45 +7,45 @@ return {
 
         harpoon:setup()
 
-        vim.keymap.set("n", "<leader>ha", function()
+        vim.keymap.set("n", "<leader>a", function()
             harpoon:list():add()
-        end, { desc = "[A]dd buffer" })
+        end, { desc = "[A]dd buffer to Harpoon" })
 
-        vim.keymap.set("n", "<leader>he", function()
+        vim.keymap.set("n", "<C-s>", function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
-        end, { desc = "Op[e]n list" })
+        end, { desc = "[S]how Harpoon List" })
 
 
-        vim.keymap.set("n", "<leader>h1", function()
+        vim.keymap.set("n", "<C-h>", function()
             harpoon:list():select(1)
-        end, { desc = "Buffer [1]" })
+        end)
 
-        vim.keymap.set("n", "<leader>h2", function()
+        vim.keymap.set("n", "<C-j>", function()
             harpoon:list():select(2)
-        end, { desc = "Buffer [2]" })
+        end)
 
-        vim.keymap.set("n", "<leader>h3", function()
+        vim.keymap.set("n", "<C-k>", function()
             harpoon:list():select(3)
-        end, { desc = "Buffer [3]" })
+        end)
 
-        vim.keymap.set("n", "<leader>h4", function()
+        vim.keymap.set("n", "<C-l>", function()
             harpoon:list():select(4)
-        end, { desc = "Buffer [4]" })
+        end)
 
-        vim.keymap.set("n", "<leader>h<S-1>", function()
+        vim.keymap.set("n", "<leader><C-h>", function()
             harpoon:list():replace_at(1)
-        end, { desc = "Store Buffer [1]" })
+        end)
 
-        vim.keymap.set("n", "<leader>h<S-2>", function()
+        vim.keymap.set("n", "<leader><C-j>", function()
             harpoon:list():replace_at(2)
-        end, { desc = "Store Buffer [2]" })
+        end)
 
-        vim.keymap.set("n", "<leader>h<S-3>", function()
+        vim.keymap.set("n", "<leader><C-k>", function()
             harpoon:list():replace_at(3)
-        end, { desc = "Store Buffer [3]" })
+        end)
 
-        vim.keymap.set("n", "<leader>h<S-4>", function()
+        vim.keymap.set("n", "<leader><C-l>", function()
             harpoon:list():replace_at(4)
-        end, { desc = "Store Buffer [4]" })
+        end)
     end,
 }
