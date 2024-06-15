@@ -1,1 +1,4 @@
 # Platform Specific ZSH Configuration File
+
+# Add neovim to path
+export PATH="/opt/nvim-linux64/bin:$PATH"
