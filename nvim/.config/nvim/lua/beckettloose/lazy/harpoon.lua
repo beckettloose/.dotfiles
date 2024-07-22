@@ -7,9 +7,9 @@ return {
 
         harpoon:setup()
 
-        vim.keymap.set("n", "<leader>a", function()
+        vim.keymap.set("n", "<leader><C-a>", function()
             harpoon:list():add()
-        end, { desc = "[A]dd buffer to Harpoon" })
+        end, { desc = "[A]dd buffer to Harpoon List" })
 
         vim.keymap.set("n", "<C-s>", function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -18,34 +18,38 @@ return {
 
         vim.keymap.set("n", "<C-h>", function()
             harpoon:list():select(1)
-        end)
+        end, { desc = "Select Harpoon Item 1" })
 
         vim.keymap.set("n", "<C-j>", function()
             harpoon:list():select(2)
-        end)
+        end, { desc = "Select Harpoon Item 2" })
 
         vim.keymap.set("n", "<C-k>", function()
             harpoon:list():select(3)
-        end)
+        end, { desc = "Select Harpoon Item 3" })
 
         vim.keymap.set("n", "<C-l>", function()
             harpoon:list():select(4)
-        end)
+        end, { desc = "Select Harpoon Item 4" })
 
         vim.keymap.set("n", "<leader><C-h>", function()
             harpoon:list():replace_at(1)
-        end)
+        end, { desc = "Replace Harpoon Item 1" })
 
         vim.keymap.set("n", "<leader><C-j>", function()
             harpoon:list():replace_at(2)
-        end)
+        end, { desc = "Replace Harpoon Item 2" })
 
         vim.keymap.set("n", "<leader><C-k>", function()
             harpoon:list():replace_at(3)
-        end)
+        end, { desc = "Replace Harpoon Item 3" })
 
         vim.keymap.set("n", "<leader><C-l>", function()
             harpoon:list():replace_at(4)
-        end)
+        end, { desc = "Replace Harpoon Item 4" })
+
+        vim.keymap.set("n", "<leader>hc", function()
+            harpoon:list():clear()
+        end, { desc = "[H]arpoon [C]lear List" })
     end,
 }

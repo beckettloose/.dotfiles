@@ -14,4 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = "beckettloose.lazy",
 	change_detection = { notify = false },
+    rocks = {
+        enabled = false,
+    }
 })

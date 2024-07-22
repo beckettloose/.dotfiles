@@ -84,7 +84,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         -- search all files in repository
         vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Search Git Files" })
 
-        vim.keymap.set("n", "<leader>x", ":Telescope file_browser<CR>", { desc = "Open File Explorer" })
+        vim.keymap.set("n", "<leader>x", ":Telescope file_browser<CR>", { desc = "Telescope File E[x]plorer" })
 
         -- Slightly advanced example of overriding default behavior and theme
         vim.keymap.set("n", "<leader>/", function()
@@ -93,7 +93,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
                 winblend = 10,
                 previewer = false,
             }))
-        end, { desc = "[/] Fuzzily search in current buffer" })
+        end, { desc = "[/] Fuzzy Search in Current Buffer" })
 
         -- It's also possible to pass additional configuration options.
         --  See `:help telescope.builtin.live_grep()` for information about particular keys
