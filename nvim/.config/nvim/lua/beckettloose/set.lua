@@ -70,7 +70,7 @@ vim.opt.timeoutlen = 300
 vim.opt.list = false
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "81"
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
