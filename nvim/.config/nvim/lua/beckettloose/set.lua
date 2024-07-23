@@ -39,8 +39,8 @@ vim.opt.breakindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Set highlight on search, but clear on pressing <Esc> in normal mode
--- TODO: add shortcut to clear highlighted search results
+-- Set highlight on search, but clear on pressing <Esc> in normal mode.
+-- This keymapping can be found remap.lua
 vim.opt.hlsearch = true
 -- vim.opt.incsearch = true
 
@@ -70,7 +70,7 @@ vim.opt.timeoutlen = 300
 vim.opt.list = false
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
--- vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
