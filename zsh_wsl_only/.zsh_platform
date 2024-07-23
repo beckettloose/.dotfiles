@@ -1,6 +1,3 @@
-# Add neovim to path
-export PATH="$HOME/neovim/bin:$PATH"
-
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
 autoload -Uz compinit && compinit
