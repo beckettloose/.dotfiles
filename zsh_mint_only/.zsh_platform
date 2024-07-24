@@ -2,3 +2,10 @@
 
 # Add neovim to path
 export PATH="/opt/nvim-linux64/bin:$PATH"
+
+# Set up environment variables for Perl installation
+PATH="/home/beckettloose/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/beckettloose/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/beckettloose/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/beckettloose/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/beckettloose/perl5"; export PERL_MM_OPT;
