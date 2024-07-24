@@ -70,7 +70,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git themes asdf fzf)
+plugins=(git themes asdf)
 
 # Uncomment the following line to disable the async git prompt
 zstyle ':omz:alpha:lib:git' async-prompt no
