@@ -2,12 +2,15 @@
 #
 # Beckett Loose 2024
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 # Add Homebrew to path
 export PATH="/opt/homebrew/bin:$PATH"
 
+# Set up fzf key bindings and fuzzy completion
+# this must be loaded after homebrew is added to path
+source <(fzf --zsh)
+
+# initialize completions with ZSH's compinit.
+# ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
