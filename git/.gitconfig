@@ -1,14 +1,27 @@
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+; [credential "https://github.com"]
+;     helper =
+;     helper = !/usr/bin/gh auth git-credential
+; [credential "https://gist.github.com"]
+;     helper =
+;     helper = !/usr/bin/gh auth git-credential
 [credential "https://github.com"]
     helper =
-    helper = !/usr/bin/gh auth git-credential
+    helper = !$(which gh) auth git-credential
 [credential "https://gist.github.com"]
     helper =
-    helper = !/usr/bin/gh auth git-credential
+    helper = !$(which gh) auth git-credential
 [user]
     name = BlockBusterBPL
     email = beckettloose@me.com
 [core]
     editor = nvim
+[init]
+    defaultBranch = master
 [alias]
     lg = lg1
     lg1 = lg1-specific --all
