@@ -7,11 +7,11 @@ return {
 
         harpoon:setup()
 
-        vim.keymap.set("n", "<leader><C-a>", function()
+        vim.keymap.set("n", "<leader>ha", function()
             harpoon:list():add()
         end, { desc = "[A]dd buffer to Harpoon List" })
 
-        vim.keymap.set("n", "<C-s>", function()
+        vim.keymap.set("n", "<leader>hs", function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
         end, { desc = "[S]how Harpoon List" })
 
@@ -50,6 +50,6 @@ return {
 
         vim.keymap.set("n", "<leader>hc", function()
             harpoon:list():clear()
-        end, { desc = "[H]arpoon [C]lear List" })
+        end, { desc = "[C]lear Harpoon List" })
     end,
 }
