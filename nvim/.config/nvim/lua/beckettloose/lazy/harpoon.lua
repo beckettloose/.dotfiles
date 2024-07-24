@@ -7,11 +7,11 @@ return {
 
         harpoon:setup()
 
-        vim.keymap.set("n", "<leader>ha", function()
+        vim.keymap.set("n", "<leader>na", function()
             harpoon:list():add()
         end, { desc = "[A]dd buffer to Harpoon List" })
 
-        vim.keymap.set("n", "<leader>hs", function()
+        vim.keymap.set("n", "<leader>ns", function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
         end, { desc = "[S]how Harpoon List" })
 
@@ -48,7 +48,7 @@ return {
             harpoon:list():replace_at(4)
         end, { desc = "Replace Harpoon Item 4" })
 
-        vim.keymap.set("n", "<leader>hc", function()
+        vim.keymap.set("n", "<leader>nc", function()
             harpoon:list():clear()
         end, { desc = "[C]lear Harpoon List" })
     end,

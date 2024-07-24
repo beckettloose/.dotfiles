@@ -28,8 +28,17 @@ return { -- Useful plugin to show you pending keybinds.
             { "<leader>m", group = "[M]ark File" },
             { "<leader>m_", hidden = true },
 
-            { "<leader>h", group = "[H]arpoon" },
+            { "<leader>n", group = "Harpoo[n]" },
+            { "<leader>n_", hidden = true },
+
+            { "<leader>h", group = "Git [H]unk" },
             { "<leader>h_", hidden = true },
+
+            { "[", group = "Previous" },
+            { "[_", hidden = true },
+
+            { "]", group = "Next" },
+            { "]_", hidden = true },
 
             {
                 -- visual mode
