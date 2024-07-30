@@ -12,6 +12,9 @@ return { -- LSP Configuration & Plugins
 
                 lint.linters_by_ft = {
                     gitcommit = {"gitlint"},
+                    sh = {"shellcheck"},
+                    bash = {"shellcheck"},
+                    zsh = {"zsh"},
                 }
 
                 lint.linters.gitlint.args = {
