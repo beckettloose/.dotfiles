@@ -9,6 +9,15 @@ return {
                 topdelete = { text = "‾" },
                 changedelete = { text = "~" },
             },
+            signs_staged_enable = true,
+            preview_config = {
+                -- Options passed to nvim_open_win
+                border = 'rounded',
+                style = 'minimal',
+                relative = 'cursor',
+                row = 1,
+                col = 0,
+            },
             on_attach = function (bufnr)
                 local gitsigns = require("gitsigns")
 
