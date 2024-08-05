@@ -31,6 +31,23 @@ return { -- Collection of various small independent plugins/modules
             return "%2l:%-2v"
         end
 
+        -- Disable LSP Section in Statusline.
+        ---@diagnostic disable-next-line: duplicate-set-field
+        statusline.section_lsp = function ()
+            return ""
+        end
+
+        -- Override the function that generates the git diff status.
+        ---@diagnostic disable-next-line: duplicate-set-field
+        statusline.section_diff = function (args)
+            if MiniStatusline.is_truncated(args.trunc_width) then return '' end
+
+            local summary = vim.b.minidiff_summary_string or vim.b.gitsigns_status
+            if summary == nil then return '' end
+
+            local icon = args.icon or ''
+            return icon .. ' ' .. (summary == '' and '' or summary)
+        end
         -- ... and there is more!
         --  Check out: https://github.com/echasnovski/mini.nvim
     end,
