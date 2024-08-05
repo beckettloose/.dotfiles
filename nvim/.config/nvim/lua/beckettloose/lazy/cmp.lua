@@ -35,6 +35,7 @@ return {
         -- into multiple repos for maintinence purposes
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function()
         -- See `:help cmp`
@@ -71,7 +72,7 @@ return {
                 ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
                 -- Also accept the completion with tab
-                ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
                 -- If you prefer more traditional completion keymaps,
                 -- you can uncomment the following lines
@@ -110,6 +111,7 @@ return {
                 },
                 { name = "luasnip" },
                 { name = "path" },
+                { name = "nvim_lsp_signature_help" },
             },
         })
     end,
