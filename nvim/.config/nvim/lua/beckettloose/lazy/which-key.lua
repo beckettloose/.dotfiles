@@ -43,6 +43,9 @@ return { -- Useful plugin to show you pending keybinds.
             { "]", group = "Next" },
             { "]_", hidden = true },
 
+            { "<leader>z", group = "[Z]en Mode" },
+            { "<leader>z_", hidden = true },
+
             {
                 -- visual mode
                 mode = { "v" },
