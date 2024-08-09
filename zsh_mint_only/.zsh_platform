@@ -9,3 +9,7 @@ PERL5LIB="/home/beckettloose/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export P
 PERL_LOCAL_LIB_ROOT="/home/beckettloose/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/beckettloose/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/beckettloose/perl5"; export PERL_MM_OPT;
+
+# initialize completions with ZSH's compinit.
+# ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
+autoload -Uz compinit && compinit

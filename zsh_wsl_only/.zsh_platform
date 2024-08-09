@@ -1,3 +1,9 @@
 # initialize completions with ZSH's compinit.
+
+# Source ASDF Script. (see: asdf-vm.com)
+. "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
+
+# initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
 autoload -Uz compinit && compinit
