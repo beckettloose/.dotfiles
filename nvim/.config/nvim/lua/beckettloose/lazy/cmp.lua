@@ -72,7 +72,7 @@ return {
                 ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
                 -- Also accept the completion with tab
-                -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                ["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
                 -- If you prefer more traditional completion keymaps,
                 -- you can uncomment the following lines
