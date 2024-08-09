@@ -16,7 +16,7 @@
     helper =
     helper = !$(which gh) auth git-credential
 [user]
-    name = BlockBusterBPL
+    name = Beckett Loose
     email = beckettloose@me.com
 [core]
     editor = nvim
