@@ -44,6 +44,9 @@ return { -- LSP Configuration & Plugins
         { "folke/neodev.nvim", opts = {} },
     },
     config = function()
+        -- Disable logging
+        vim.lsp.set_log_level("off");
+
         -- Brief aside: **What is LSP?**
         --
         -- LSP is an initialism you've probably heard, but might not understand what it is.
