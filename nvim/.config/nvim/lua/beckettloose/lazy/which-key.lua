@@ -7,26 +7,9 @@ return { -- Useful plugin to show you pending keybinds.
 
         -- Document existing key chains
         wk.add({
-            { "<leader>c", group = "[C]ode" },
-            { "<leader>c_", hidden = true },
 
-            { "<leader>d", group = "[D]ocument" },
-            { "<leader>d_", hidden = true },
-
-            { "<leader>r", group = "[R]ename" },
-            { "<leader>r_>", hidden = true },
-
-            { "<leader>s", group = "[S]earch" },
-            { "<leader>s_", hidden = true },
-
-            { "<leader>w", group = "[W]orkspace" },
-            { "<leader>w_", hidden = true },
-
-            { "<leader>t", group = "[T]oggle" },
-            { "<leader>t_", hidden = true },
-
-            { "<leader>m", group = "[M]ark File" },
-            { "<leader>m_", hidden = true },
+            { "<leader>v", group = "[V]im" },
+            { "<leader>v_", hidden = true },
 
             { "<leader>n", group = "Harpoo[n]" },
             { "<leader>n_", hidden = true },
