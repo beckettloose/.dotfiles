@@ -1,5 +1,9 @@
 # Platform Specific ZSH Configuration File
 
+# Source ASDF
+. "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
+
 # Add neovim to path
 export PATH="/opt/nvim-linux64/bin:$PATH"
 
