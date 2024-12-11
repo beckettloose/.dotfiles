@@ -4,6 +4,7 @@
 
 # Create alias for tailscale cli
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # Add Homebrew to path
 export PATH="/opt/homebrew/bin:$PATH"
