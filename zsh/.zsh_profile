@@ -20,3 +20,9 @@ export PATH
 # quick sessionizer shortcut
 bindkey -s ^f "tmux-sessionizer\n"
 
+# quick ssh shortcut
+bindkey -s ^h ". fzf-ssh\n"
+
+# unbind fwd-i-search
+bindkey -r ^s
+
