@@ -89,6 +89,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
         vim.keymap.set("n", "<leader>x", ":Telescope file_browser<CR>", { desc = "Telescope File E[x]plorer" })
 
+        vim.keymap.set("n", "<leader>vcl", ":Telescope filetypes<CR>", { desc = "Vim Change Language" })
+
         -- Slightly advanced example of overriding default behavior and theme
         vim.keymap.set("n", "<leader>/", function()
             -- You can pass additional configuration to Telescope to change the theme, layout, etc.
