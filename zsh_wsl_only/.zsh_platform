@@ -4,6 +4,10 @@
 . "$HOME/.asdf/asdf.sh"
 fpath=(${ASDF_DIR}/completions $fpath)
 
+# Source fzf key bindings
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
 autoload -Uz compinit && compinit
