@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# get branches and send to fzf
+choice=$(git ls-remote -q --heads | sed 's/^.\{52\}//' | fzf --height 40% --layout reverse --border --border-label="Fuzzy Git Switch")
+
+# execute switch if branch was provided
+if [[ -n "$choice" ]]; then
+    git switch $choice
+fi
+

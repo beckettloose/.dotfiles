@@ -21,8 +21,11 @@ export PATH
 bindkey -s ^f "tmux-sessionizer\n"
 
 # quick ssh shortcut
-bindkey -s ^h ". fzf-ssh\n"
+bindkey -s ^s ". fzf-ssh\n"
+
+# quick git switch shortcut
+bindkey -s "^[s" "fzf-git-branch\n"
 
 # unbind fwd-i-search
-bindkey -r ^s
+# bindkey -r ^s
 
