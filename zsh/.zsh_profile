@@ -24,7 +24,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^s ". fzf-ssh\n"
 
 # quick git switch shortcut
-bindkey -s "^[s" "fzf-git-branch\n"
+bindkey -s "^[s" "fzf-git-switch\n"
 
 # unbind fwd-i-search
 # bindkey -r ^s

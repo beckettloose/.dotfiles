@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# create empty array to store branches
+branches=()
+
+# get all local branches without remotes
+for i in $(git branch --format "%(refname:short) %(upstream)" | awk '{if (!$2) print $1;}'); do
+    branches+=("$i");
+done
+
+# get all branches from remotes (without repeats)
+for j in $(git ls-remote -q --heads | sed 's/^.\{52\}//'); do
+    if [[ ! " ${branches[*]} " =~ [[:space:]]${j}[[:space:]] ]]; then
+        branches+=("$j");
+    fi
+done
+
+# get branches and send to fzf
+choice=$(printf "%s\n" "${branches[@]}" | fzf --height 40% --layout reverse --border --border-label="Fuzzy Git Switch")
+
+# execute switch if branch was provided
+if [[ -n "$choice" ]]; then
+    git switch "$choice"
+fi
+
