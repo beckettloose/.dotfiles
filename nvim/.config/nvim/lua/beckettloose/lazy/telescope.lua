@@ -85,11 +85,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
         end)
         vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
 
+        vim.keymap.set("n", "<leader>vk", builtin.keymaps, {})
+
         vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
         vim.keymap.set("n", "<leader>x", ":Telescope file_browser<CR>", { desc = "Telescope File E[x]plorer" })
 
-        vim.keymap.set("n", "<leader>vcl", ":Telescope filetypes<CR>", { desc = "Vim Change Language" })
+        vim.keymap.set("n", "<leader>vcl", builtin.filetypes, { desc = "Vim Change Language" })
 
         -- Slightly advanced example of overriding default behavior and theme
         vim.keymap.set("n", "<leader>/", function()
