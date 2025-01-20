@@ -20,12 +20,13 @@ done
 # get branches and send to fzf
 choice=$(printf "%s\n" "${branches[@]}" | fzf --height 40% --layout reverse --border --border-label="Fuzzy Git Switch")
 
-# Fetch new branches from remotes.
-printf "Fetching from remotes...\n"
-git fetch
-
 # execute switch if branch was provided
 if [[ -n "$choice" ]]; then
+
+    # Fetch new branches from remotes.
+    printf "Fetching from remotes...\n"
+    git fetch
+
     git switch "$choice"
 fi
 
