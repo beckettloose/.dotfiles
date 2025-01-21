@@ -16,4 +16,11 @@ PERL_MM_OPT="INSTALL_BASE=/home/beckettloose/perl5"; export PERL_MM_OPT;
 
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+    compinit
+done
+
+compinit -C
+

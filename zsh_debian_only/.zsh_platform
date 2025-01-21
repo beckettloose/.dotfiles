@@ -5,4 +5,11 @@ FPATH="${ASDF_DIR}/completions:$FPATH"
 
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+    compinit
+done
+
+compinit -C
+
