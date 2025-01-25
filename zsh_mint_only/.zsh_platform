@@ -7,6 +7,9 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # Add neovim to path
 export PATH="/opt/nvim-linux64/bin:$PATH"
 
+# Create alias for clearing dns cache
+alias dnsflush="sudo resolvectl flush-caches"
+
 # Set up environment variables for Perl installation
 PATH="/home/beckettloose/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/beckettloose/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
