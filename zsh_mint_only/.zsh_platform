@@ -4,6 +4,9 @@
 . "$HOME/.asdf/asdf.sh"
 fpath=(${ASDF_DIR}/completions $fpath)
 
+# Source fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Add neovim to path
 export PATH="/opt/nvim-linux64/bin:$PATH"
 
