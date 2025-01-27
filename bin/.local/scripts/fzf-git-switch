@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# check if we are in a git repo
+if ! git rev-parse --is-inside-work-tree > /dev/null; then
+    exit 1
+fi
+
 # create empty array to store branches
 branches=()
 
