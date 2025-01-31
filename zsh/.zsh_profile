@@ -9,6 +9,7 @@ VIM="nvim"
 
 # set up important env vars
 export GIT_EDITOR=$VIM
+export KUBE_EDITOR=$VIM
 #export DOTFILES=$HOME/.dotfiles
 
 #set up our path variable
