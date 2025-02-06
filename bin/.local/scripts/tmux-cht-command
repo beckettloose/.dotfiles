@@ -36,3 +36,13 @@ stow
 chmod
 chown
 make
+cmake
+parallel
+du
+df
+mount
+umount
+dd
+ripgrep
+rg
+tmux
