@@ -34,14 +34,15 @@ fi
 dirs=()
 
 # Find all symlinked directories
+# shellcheck disable=SC2044 # works fine, and much simpler than `find -exec`
 for i in $(find ~/projects ~ ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type l); do
-    if [[ -d $i ]]; then dirs+=($i); fi
+    if [[ -d $i ]]; then dirs+=("$i"); fi
 done
 
-
 # Find all normal directories
+# shellcheck disable=SC2044 # works fine, and much simpler than `find -exec`
 for j in $(find ~/projects ~ ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type d); do
-    dirs+=($j)
+    dirs+=("$j")
 done
 
 # Use fzf to let the user pick a directory
@@ -64,23 +65,23 @@ tmux_running=$(pgrep tmux)
 # If tmux isn't running at all
 if [[ -z $tmux_running ]]; then
     # Create a new session and attach to it
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s "$selected_name" -c "$selected"
     exit 0
 fi
 
 # If tmux is running, but doesn't have the desired session
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
     # Create the new session in the background
-    tmux new-session -ds $selected_name -c $selected
+    tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
 # If we are already in a tmux session
 if [[ -z $TMUX ]]; then
     # Switch to the desired session
-    tmux attach -d -t=$selected_name
+    tmux attach -d -t="$selected_name"
     exit 0
 fi
 
 # Otherwise, attach to the existing session
-tmux switch-client -t $selected_name
+tmux switch-client -t "$selected_name"
 
