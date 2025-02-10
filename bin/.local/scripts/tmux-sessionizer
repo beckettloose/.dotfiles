@@ -52,6 +52,9 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
+# Add user's home directory back on to selection
+selected="${HOME}/${selected}"
+
 # Replace dots with underscores for tmux session name
 selected_name=$(basename "$selected" | tr . _)
 
