@@ -15,7 +15,7 @@ for i in $(git branch --format "%(refname:short) %(upstream)" | awk '{if (!$2) p
 done
 
 # get all branches from remotes (without repeats)
-printf "Finding remote branches...\r"
+printf "Finding remote branches... this may take a while (make sure all remotes are reachable)\r"
 for j in $(git ls-remote -q --heads | sed 's/^.\{52\}//'); do
     if [[ ! " ${branches[*]} " =~ [[:space:]]${j}[[:space:]] ]]; then
         branches+=("$j");
