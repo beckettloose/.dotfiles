@@ -96,15 +96,20 @@ source ~/.zsh_platform
 # Example aliases
 source ~/.zsh_profile
 
+# Map vim and vi as shortcuts to nvim
 alias vim="nvim"
 alias vi="nvim"
-alias zshconfig="vi ~/.zshrc"
-alias zshprofile="vi ~/.zsh_profile"
-alias ohmyzsh="vi ~/.oh-my-zsh"
-alias reload="exec zsh"
-alias dl="wget --content-disposition"
-#alias please="sudo"
-#alias starwars="nc towel.blinkenlights.nl 23"
+# alias zshconfig="vi ~/.zshrc"
+# alias zshprofile="vi ~/.zsh_profile"
+# alias ohmyzsh="vi ~/.oh-my-zsh"
+
+alias reload="exec zsh" # Reloads the shell instance
+alias dl="wget --content-disposition" # Download file using remote file name
+
+# Functions that can't be aliases
+rtc() { # Print return code of last executed command
+    echo "$?"
+}
 
 # export PATH="/opt/homebrew/bin:$PATH"
 
