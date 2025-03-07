@@ -236,7 +236,7 @@ return { -- LSP Configuration & Plugins
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             "stylua", -- Used to format Lua code
-            "clang-format", -- Used to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code
+            -- "clang-format", -- Used to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code
             "shellcheck", -- Static analysis for sh and bash scripts (does not support zsh)
             -- "gitlint", -- Check commit messages for style
         })
