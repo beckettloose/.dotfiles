@@ -1,14 +1,25 @@
 # Platform Specific ZSH Configuration File
 
-# Source ASDF
-. "$HOME/.asdf/asdf.sh"
-fpath=(${ASDF_DIR}/completions $fpath)
+# Add Go binaries to path
+export PATH="/usr/local/go/bin:$PATH"
+
+# Add asdf shims to path
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# Setup thefuck alias
+eval $(thefuck --alias)
+
+# Add platformio to path
+export PATH="$HOME/.platformio/penv/bin/:$PATH"
+
+# Add gcc arm compiler to path
+export PATH="/usr/local/gcc-arm/bin/:$PATH"
+
+# Add ccache to path
+export PATH="/usr/lib/ccache/:$PATH"
 
 # Source fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Add neovim to path
-export PATH="/opt/nvim-linux64/bin:$PATH"
 
 # Create alias for clearing dns cache
 alias dnsflush="sudo resolvectl flush-caches"
