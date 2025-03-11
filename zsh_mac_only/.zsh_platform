@@ -9,6 +9,13 @@ alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # Add Homebrew to path
 export PATH="/opt/homebrew/bin:$PATH"
 
+eval $(thefuck --alias)
+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# Add tcl-tk to path
+export PATH="usr/local/opt/tcl-tk/bin:$PATH"
+
 # Set up fzf key bindings and fuzzy completion
 # this must be loaded after homebrew is added to path
 source <(fzf --zsh)
@@ -22,5 +29,3 @@ if type brew &>/dev/null; then
     compinit
 fi
 
-# Add tcl-tk to path
-export PATH="usr/local/opt/tcl-tk/bin:$PATH"
