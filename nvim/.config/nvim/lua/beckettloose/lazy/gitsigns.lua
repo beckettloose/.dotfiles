@@ -50,14 +50,13 @@ return {
                 map('v', '<leader>hs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = "[S]tage Hunk" })
                 map('v', '<leader>hr', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = "[R]eset Hunk" })
                 map('n', '<leader>hS', gitsigns.stage_buffer, { desc = "[S]tage Buffer" })
-                map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = "[u]ndo Stage Hunk" })
                 map('n', '<leader>hR', gitsigns.reset_buffer, { desc = "[R]eset Buffer" })
                 map('n', '<leader>hp', gitsigns.preview_hunk, { desc = "[p]review Hunk" })
                 map('n', '<leader>hb', function() gitsigns.blame_line{full=true} end, { desc = "[b]lame Hunk" })
                 map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "Toggle Current Line [b]lame" })
                 map('n', '<leader>hd', gitsigns.diffthis, { desc = "[d]iff This" })
                 map('n', '<leader>hD', function() gitsigns.diffthis('~') end, { desc = "[D]iff This Buffer" })
-                map('n', '<leader>td', gitsigns.toggle_deleted, { desc = "Toggle [d]eleted Hunks" })
+                map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = "[i]nline Preview Hunk" })
             end
         })
     end
