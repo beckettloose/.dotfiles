@@ -105,6 +105,7 @@ return {
             sources = {
                 {
                     name = "nvim_lsp",
+                    ---@diagnostic disable-next-line: unused-local
                     entry_filter = function (entry, ctx)
                         return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Text'
                     end
