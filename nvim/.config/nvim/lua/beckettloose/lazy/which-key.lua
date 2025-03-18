@@ -29,6 +29,24 @@ return { -- Useful plugin to show you pending keybinds.
             { "<leader>z", group = "[Z]en Mode" },
             { "<leader>z_", hidden = true },
 
+            { "<leader>c", group = "[C]ellular Automaton" },
+            { "<leader>c_", hidden = true },
+
+            { "<leader>p", group = "Gre[p]" },
+            { "<leader>p_", hidden = true },
+
+            { "<leader>vw", group = "[W]rapping" },
+            { "<leader>vw_", hidden = true },
+
+            { "<leader>vc", group = "[C]hange" },
+            { "<leader>vc_", hidden = true },
+
+            { "<leader>vm", group = "[M]ark" },
+            { "<leader>vm_", hidden = true },
+
+            { "<leader>vl", group = "C[l]oak" },
+            { "<leader>vl_", hidden = true },
+
             {
                 -- visual mode
                 mode = { "v" },

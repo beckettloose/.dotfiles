@@ -46,7 +46,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", '<cmd>silent !tmux neww -n sessionizer "tmux-sessionizer 1"<CR>')
 
 -- Format buffer
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader><C-f>", vim.lsp.buf.format, { desc = "[F]ormat Buffer" })
 
 -- Next and Prev LSP warnings
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -60,15 +60,15 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Prev Location Lis
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace Word Under Cursor" })
 
 -- Mark current file as executable
-vim.keymap.set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "[M]ark File E[x]ecutable" })
+vim.keymap.set("n", "<leader>vmx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Current File E[x]ecutable" })
 
 -- IDK??
 -- vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
 -- We do a little trolling
-vim.keymap.set("n", "<leader>cr", "<cmd>CellularAutomaton make_it_rain<CR>")
-vim.keymap.set("n", "<leader>cs", "<cmd>CellularAutomaton scramble<CR>")
-vim.keymap.set("n", "<leader>cg", "<cmd>CellularAutomaton game_of_life<CR>")
+vim.keymap.set("n", "<leader>cr", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Make it [R]ain" })
+vim.keymap.set("n", "<leader>cs", "<cmd>CellularAutomaton scramble<CR>", { desc = "[S]cramble" })
+vim.keymap.set("n", "<leader>cg", "<cmd>CellularAutomaton game_of_life<CR>", { desc = "[G]ame of Life" })
 
 -- TODO: Diagnostic Keymaps from old init
 
@@ -77,6 +77,12 @@ vim.keymap.set("n", "<left>", '<cmd> echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd> echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd> echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd> echo "Use j to move!!"<CR>')
+
+-- Cloak.nvim key bindings --
+vim.keymap.set("n", "<leader>vlt", "<cmd>CloakToggle<CR>", { desc = "[T]oggle" })
+vim.keymap.set("n", "<leader>vld", "<cmd>CloakDisable<CR>", { desc = "[D]isable" })
+vim.keymap.set("n", "<leader>vle", "<cmd>CloakEnable<CR>", { desc = "[E]nable" })
+vim.keymap.set("n", "<leader>vlp", "<cmd>CloakPreviewLine<CR>", { desc = "[P]review Line" })
 
 -- Personal Keymaps --
 

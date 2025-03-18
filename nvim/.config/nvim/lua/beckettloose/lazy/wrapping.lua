@@ -9,14 +9,14 @@ return {
 
         vim.keymap.set("n", "<leader>vwh", function ()
             require('wrapping').hard_wrap_mode()
-        end, { desc = "[H]ard Wrapping" })
+        end, { desc = "[H]ard" })
 
         vim.keymap.set("n", "<leader>vws", function ()
             require('wrapping').soft_wrap_mode()
-        end, { desc = "[S]oft Wrapping" })
+        end, { desc = "[S]oft" })
 
         vim.keymap.set("n", "<leader>vwt", function ()
             require('wrapping').toggle_wrap_mode()
-        end, { desc = "[T]oggle Wrapping Mode" })
+        end, { desc = "[T]oggle" })
     end
 }
