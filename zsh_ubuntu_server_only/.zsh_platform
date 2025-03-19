@@ -1,17 +1,4 @@
-# initialize completions with ZSH's compinit.
-
-# Set up asdf completions (see: asdf-vm.com)
-
-fpath=(${ASDF_DIR}/completions $fpath)
-
-# Set up nvm
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Source fzf key bindings
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# Ubuntu Server Platform Specific zsh configuration
 
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE

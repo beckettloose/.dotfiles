@@ -1,5 +1,4 @@
 export XDG_CONFIG_HOME=$HOME/.config
-VIM="nvim"
 
 #PERSONAL=$XDG_CONFIG_HOME/personal
 #source $PERSONAL/env
@@ -7,24 +6,44 @@ VIM="nvim"
 #	source $i
 #done
 
-# set up important env vars
+### Set up important env vars ###
+
+VIM="nvim"
 export GIT_EDITOR=$VIM
 export KUBE_EDITOR=$VIM
 #export DOTFILES=$HOME/.dotfiles
 
-#set up our path variable
+# Set up our path variable
 path=("$HOME/.local/scripts" $path)
 path=("$HOME/.local/bin" $path)
 
 export PATH
 
-# quick sessionizer shortcut
+### Set up personal aliases and functions ###
+
+# Map vim and vi as shortcuts to nvim
+alias vim="nvim"
+alias vi="nvim"
+# alias zshconfig="vi ~/.zshrc"
+# alias zshprofile="vi ~/.zsh_profile"
+# alias ohmyzsh="vi ~/.oh-my-zsh"
+
+alias reload="exec zsh" # Reloads the shell instance
+alias dl="wget --content-disposition" # Download file using remote file name
+
+rtc() { # Print return code of last executed command
+    echo "$?"
+}
+
+### Set up zsh key bindings ###
+
+# Quick sessionizer shortcut
 bindkey -s ^f "tmux-sessionizer\n"
 
-# quick ssh shortcut
+# Quick ssh shortcut
 bindkey -s ^s ". fzf-ssh\n"
 
-# quick git switch shortcut
+# Quick git switch shortcut
 bindkey -s "^[s" "fzf-git-switch\n"
 
 # unbind fwd-i-search

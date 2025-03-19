@@ -81,6 +81,11 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Load system-specific zsh configuration.
+# This file is unique to each individual system, and must be created manually.
+# Use this file for setting up env variables like $PATH or loading completions.
+source ~/.zsh_system
+
 # Load platform-specific zsh configuration.
 # This file should be automatically linked by the dotfiles installer.
 source ~/.zsh_platform
@@ -93,30 +98,5 @@ source ~/.zsh_platform
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+# Load all of our user-specific things like aliases and keybinds from this file
 source ~/.zsh_profile
-
-# Map vim and vi as shortcuts to nvim
-alias vim="nvim"
-alias vi="nvim"
-# alias zshconfig="vi ~/.zshrc"
-# alias zshprofile="vi ~/.zsh_profile"
-# alias ohmyzsh="vi ~/.oh-my-zsh"
-
-alias reload="exec zsh" # Reloads the shell instance
-alias dl="wget --content-disposition" # Download file using remote file name
-
-# Functions that can't be aliases
-rtc() { # Print return code of last executed command
-    echo "$?"
-}
-
-# export PATH="/opt/homebrew/bin:$PATH"
-
-# if type brew &>/dev/null; then
-#     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-#
-#     autoload -Uz compinit
-#     compinit
-# fi
-# export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
