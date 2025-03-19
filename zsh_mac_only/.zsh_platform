@@ -26,6 +26,10 @@ if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
     autoload -Uz compinit
-    compinit
+    if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+        compinit
+    else
+        compinit -C
+    fi
 fi
 
