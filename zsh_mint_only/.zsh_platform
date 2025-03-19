@@ -1,35 +1,7 @@
 # Platform Specific ZSH Configuration File
 
-# Add Go binaries to path
-export PATH="/usr/local/go/bin:$PATH"
-
-# Add asdf shims to path
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
-# Setup thefuck alias
-eval $(thefuck --alias)
-
-# Add platformio to path
-export PATH="$HOME/.platformio/penv/bin/:$PATH"
-
-# Add gcc arm compiler to path
-export PATH="/usr/local/gcc-arm/bin/:$PATH"
-
-# Add ccache to path
-export PATH="/usr/lib/ccache/:$PATH"
-
-# Source fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Create alias for clearing dns cache
 alias dnsflush="sudo resolvectl flush-caches"
-
-# Set up environment variables for Perl installation
-PATH="/home/beckettloose/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/beckettloose/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/beckettloose/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/beckettloose/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/beckettloose/perl5"; export PERL_MM_OPT;
 
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
