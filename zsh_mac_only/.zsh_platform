@@ -1,24 +1,4 @@
 # Mac OS Platform Specific zsh configuration
-#
-# Beckett Loose 2024
-
-# Create alias for tailscale cli
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-
-# Add Homebrew to path
-export PATH="/opt/homebrew/bin:$PATH"
-
-eval $(thefuck --alias)
-
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
-# Add tcl-tk to path
-export PATH="usr/local/opt/tcl-tk/bin:$PATH"
-
-# Set up fzf key bindings and fuzzy completion
-# this must be loaded after homebrew is added to path
-source <(fzf --zsh)
 
 # initialize completions with ZSH's compinit.
 # ALL COMPLETIONS MUST BE LOADED BEFORE THIS LINE
