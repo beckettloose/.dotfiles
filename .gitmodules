@@ -1,3 +1,3 @@
 [submodule "tmux/.config/tmux"]
-	path = tmux/.config/tmux
+	path = tmux/dot-config/tmux
 	url = https://github.com/beckettloose/.tmux.git
