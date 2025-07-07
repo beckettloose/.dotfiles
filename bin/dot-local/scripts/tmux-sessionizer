@@ -46,7 +46,7 @@ for j in $(find ~/projects ~ ~/work ~/personal ~/external -mindepth 1 -maxdepth 
 done
 
 # Use fzf to let the user pick a directory
-selected=$(printf "%s\n" "${dirs[@]#$HOME/}" | fzf)
+selected=$(printf "%s\n" "${dirs[@]#$HOME/}" | fzf --scheme=path)
 
 # If the user didn't select a directory, exit.
 if [[ -z $selected ]]; then
