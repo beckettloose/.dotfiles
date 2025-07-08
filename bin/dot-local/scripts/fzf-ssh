@@ -79,16 +79,10 @@ instant=$(yq ".config.defaults.instant" $FUZZY_SSH_CONFIG_FILE)
 debug_echo "\$instant is '$instant'"
 
 if [[ $instant == "true" ]]; then
+    echo "Selected Host: $choice"
     ssh "$choice"
 else
     zle reset-prompt
     zle -U "ssh ${choice}"
 fi
 
-exit 0
-
-# prepopulate command prompt with final command
-if [[ -n "$choice" ]]; then
-    #print -z ssh $choice
-    zle -U "ssh ${choice}"
-fi
