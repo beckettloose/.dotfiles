@@ -29,3 +29,4 @@
     path = ~/work/.gitconfig
 [oh-my-zsh]
     hide-dirty = 1
+    max-branch-length = 25
