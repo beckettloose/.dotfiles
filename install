@@ -2,8 +2,18 @@
 # I am using zsh instead of bash. I was having some troubles using bash with
 # arrays. Didn't want to investigate, so I just did zsh
 
+if [[ -z $DOTFILES ]]; then
+    echo "warning: dotfiles directory not specified, defaulting to ${HOME}/.dotfiles"
+    DOTFILES=$HOME/.dotfiles
+fi
+
+if [[ -z $DOTFILES_STOW_FOLDERS ]]; then
+    echo "fatal: no stow modules specified! At least one module is required."
+    exit 1
+fi
+
 pushd $DOTFILES
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+for folder in $(echo $DOTFILES_STOW_FOLDERS | sed "s/,/ /g")
 do
     echo "stow $folder"
     stow --dotfiles -D $folder

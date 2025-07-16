@@ -88,7 +88,7 @@ source ~/.zsh_system
 
 # Load platform-specific zsh configuration.
 # This file should be automatically linked by the dotfiles installer.
-source ~/.zsh_platform
+source ~/.zsh_dist
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

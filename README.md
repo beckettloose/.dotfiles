@@ -35,7 +35,7 @@ This repository uses a combination of GNU Stow and a few custom shell scripts to
 
 Directories in the root of this repository are known as 'modules'. A module is the most granular unit of control when choosing which files are stowed on a given system. All files and directories inside a module are symlinked to the current user's home folder. Files may have conflicting names, as long as they are in different modules that are never stowed simultaneously (see my `.zsh_platform` implementation).
 
-To stow the appropriate files for your system, run the corresponding shell script. If stow finds that any of the files already exist (e.g. your old zsh configuration), it will not overwrite them with the files from the repo. In this case, you should move the conflicting file elsewhere and run the shell script again.
+To stow the appropriate files for your system, set the environment variable `DOTFILES_STOW_FOLDERS` to a comma-separated list of the modules you wish to install. Then, run the `install` script. If stow finds that any of the files already exist (e.g. your old zsh configuration), it will not overwrite them with the files from the repo. In this case, you should move the conflicting file elsewhere (`.zshrc -> .zshrc.bak`) and run the shell script again.
 
 If you use any of the scripts, you may need to modify the dotfiles directory so that the scripts know where your modules are stored. By default it is `~/.dotfiles`, but this may differ depending on where you choose to clone the repo.
 
@@ -43,29 +43,26 @@ If you use any of the scripts, you may need to modify the dotfiles directory so 
 
 ### Modules
 
-- bin: Useful scripts and associated data.
+- bin: Useful scripts and associated data
 - git: My gitconfig
 - nvim: My Neovim configuration
 - pulseaudio: Custom pulseaudio config for my Behringer XR-18
 - tmux: My tmux configuration (as a submodule)
+- tpm_fido: TPM-FIDO systemd user unit
 - zsh: My base zsh configuration
-- zsh_debian_only: Zsh config for Debian.
-- zsh_mac_only: Zsh config for mac OS.
-- zsh_mint_only: Zsh config for Linux Mint.
-- zsh_ubuntu_server_only: Zsh config for Ubuntu Server.
-- zsh_wsl_only: Zsh config for WSL.
+- zsh_dist_debian: Zsh config for Debian
+- zsh_dist_macos: Zsh config for mac OS
+- zsh_dist_mint: Zsh config for Linux Mint
+- zsh_dist_ubuntu_server: Zsh config for Ubuntu Server
+- zsh_dist_wsl: Zsh config for WSL
 
 ### Files
 
 - clean-env: unstow all modules.
-- install: stow all modules in the STOW_FOLDERS env var.
-- debian: stow folders required on debian.
-- macos: stow folders required on mac OS.
-- mint: stow folders required for Linux Mint.
-- ubuntu-server: stow folders required for Ubuntu Server.
-- wsl: stow folders required for WSL.
+- install: stow all modules in the DOTFILES_STOW_FOLDERS env var.
+- fresh-install: set up a fresh installation and select the module list
 
-## Usage
+## Usage (To Be Updated...)
 
 1. Install the requirements (and any bonus utilities)
 2. Make sure the files you wish to stow do not already exist (and if they do exist, rename them before continuing)

@@ -1,0 +1,10 @@
+#!/bin/env zsh
+
+# first-install script to handle initial setup
+
+### System Presets ###
+# Debian: bin,nvim,tmux,zsh,zsh_debian,only,pulseaudio
+# MacOS: bin,git,nvim,tmux,zsh,zsh_mac_only
+# Mint: bin,git,nvim,tmux,zsh,zsh_mint_only,pulseaudio,tpm_fido
+# Ubuntu Server: bin,git,nvim,tmux,zsh,zsh_ubuntu_server_only
+# WSL: bin,git,nvim,tmux,zsh,zsh_wsl_only
