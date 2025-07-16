@@ -27,6 +27,7 @@ You are more than welcome to re-use this code and repo structure for managing yo
 - neovim (Good text editor)
 - fzf ("Fuzzy finder" for efficiently searching large lists)
 - ripgrep (Recursively search for text in a file tree)
+- [omz-git-branch](https://github.com/cpwillis/omz-git-branch) (To truncate long branch names in prompt)
 
 ## How this repo works
 
