@@ -13,8 +13,6 @@
 # Currently Broken Features
 #   - validate config file before execution
 #   - use custom fzf options
-#   - handle default user name
-#   - handle non-instant mode
 
 debug_echo() {
    if [ "$DEBUG" ]; then echo "debug: $1"; fi
@@ -75,14 +73,6 @@ if ! [[ -n "$choice" ]]; then
     exit 1
 fi
 
-instant=$(yq ".config.defaults.instant" $FUZZY_SSH_CONFIG_FILE)
-debug_echo "\$instant is '$instant'"
-
-if [[ $instant == "true" ]]; then
-    echo "Selected Host: $choice"
-    ssh "$choice"
-else
-    zle reset-prompt
-    zle -U "ssh ${choice}"
-fi
+echo "Selected Host: $choice"
+ssh "$choice"
 
