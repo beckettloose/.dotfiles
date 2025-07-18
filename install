@@ -3,7 +3,7 @@
 # arrays. Didn't want to investigate, so I just did zsh
 
 if [[ -z $DOTFILES ]]; then
-    echo "warning: dotfiles directory not specified, defaulting to ${HOME}/.dotfiles"
+    echo "warning: dotfiles directory not specified, defaulting to ${HOME}/.dotfiles! Set the DOTFILES environment variable to hide this message."
     DOTFILES=$HOME/.dotfiles
 fi
 
