@@ -29,8 +29,8 @@ return { -- Useful plugin to show you pending keybinds.
             { "<leader>z", group = "[Z]en Mode" },
             { "<leader>z_", hidden = true },
 
-            { "<leader>c", group = "[C]ellular Automaton" },
-            { "<leader>c_", hidden = true },
+            { "<leader>v0", group = "Cellular Automaton" },
+            { "<leader>v0_", hidden = true },
 
             { "<leader>p", group = "Gre[p]" },
             { "<leader>p_", hidden = true },

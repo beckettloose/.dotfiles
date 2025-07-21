@@ -66,9 +66,9 @@ vim.keymap.set("n", "<leader>vmx", "<cmd>!chmod +x %<CR>", { silent = true, desc
 -- vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
 -- We do a little trolling
-vim.keymap.set("n", "<leader>cr", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Make it [R]ain" })
-vim.keymap.set("n", "<leader>cs", "<cmd>CellularAutomaton scramble<CR>", { desc = "[S]cramble" })
-vim.keymap.set("n", "<leader>cg", "<cmd>CellularAutomaton game_of_life<CR>", { desc = "[G]ame of Life" })
+vim.keymap.set("n", "<leader>v0r", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Make it [R]ain" })
+vim.keymap.set("n", "<leader>v0s", "<cmd>CellularAutomaton scramble<CR>", { desc = "[S]cramble" })
+vim.keymap.set("n", "<leader>v0g", "<cmd>CellularAutomaton game_of_life<CR>", { desc = "[G]ame of Life" })
 
 -- TODO: Diagnostic Keymaps from old init
 
