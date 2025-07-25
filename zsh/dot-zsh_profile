@@ -46,6 +46,7 @@ bindkey -s ^s "fzf-ssh\n"
 
 # Quick git switch shortcut
 bindkey -s "^[s" "fzf-git-switch\n"
+bindkey -s "^[S" "fzf-git-switch all\n"
 
 # unbind fwd-i-search
 # bindkey -r ^s
