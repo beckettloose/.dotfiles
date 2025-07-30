@@ -28,11 +28,23 @@ alias vi="nvim"
 # alias zshprofile="vi ~/.zsh_profile"
 # alias ohmyzsh="vi ~/.oh-my-zsh"
 
-alias reload="exec zsh" # Reloads the shell instance
-alias dl="wget --content-disposition" # Download file using remote file name
+# Reloads the shell instance
+# Note that using this repeatedly in the same shell will progressively make
+# environment variables like PATH get longer as each successive reload appends
+# more entries.
+alias reload="exec zsh"
 
-rtc() { # Print return code of last executed command
+# wget but let the server tell us what the filename should be
+alias dl="wget --content-disposition"
+
+# Print return code of last executed command
+rtc() {
     echo "$?"
+}
+
+# profile zsh startup time without modifying config file
+zshprof() {
+    ZPROF=1 zsh -i -c exit | less
 }
 
 ### Set up zsh key bindings ###

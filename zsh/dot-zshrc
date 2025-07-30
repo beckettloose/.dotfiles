@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-zmodload zsh/zprof
+[ -z "$ZPROF" ] || zmodload zsh/zprof
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -102,4 +102,4 @@ source ~/.zsh_dist
 source ~/.zsh_profile
 
 # Uncomment the line below to print the output of the zprof shell startup profiler
-# zprof
+[ -z "$ZPROF" ] || zprof
