@@ -9,6 +9,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 ### Set up important env vars ###
 
 VIM="nvim"
+export EDITOR=$VIM
 export GIT_EDITOR=$VIM
 export KUBE_EDITOR=$VIM
 #export DOTFILES=$HOME/.dotfiles
