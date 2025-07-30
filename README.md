@@ -4,7 +4,7 @@
 
 This repository contains ~all~ most of my config files for unix-like operating systems (mostly Linux and macOS) along with their associated utilities.
 
-You are more than welcome (even encouraged) to use this code and repo structure as a template for managing your own dotfiles, but you will need to change much of the content to be compatible with your system and software.
+You are more than welcome to use this repo as a template for managing your own dotfiles, but you will need to change the majority of the content to work on your system.
 
 ## Inspiration
 
@@ -22,9 +22,9 @@ You are more than welcome (even encouraged) to use this code and repo structure 
 ### Bonus utilities that I usually install
 
 - tmux (Multiple terminals in one window)
-- neovim (Good text editor)
+- neovim (My preferred text editor)
 - fzf ("Fuzzy finder" for efficiently searching large lists, used in a few of my scripts)
-- ripgrep (Recursively search for text in a file tree)
+- ripgrep (Recursively search a directory for lines matching a pattern)
 - [omz-git-branch](https://github.com/cpwillis/omz-git-branch) (To truncate long branch names in omz prompt)
 
 ## How this repo works
@@ -41,7 +41,7 @@ If you clone this repo to any location other than `~/.dotfiles`, you will need t
 
 1. Install any prerequisites (git, zsh, fzf, ripgrep, etc.)
 2. Clone this repo to `~/.dotfiles`. You may choose a different location but additional configuration is required.
-3. Create any system directory trees manually to prevent stow from adopting the highest level dir (usually `.local` or similar)
+3. Create any system directory trees manually to prevent stow from adopting the highest level directory (usually `.local` or similar)
 4. Create and source the `~/.zsh_system` file that sets up your environment variables (including `DOTFILES_STOW_FOLDERS`)
 5. Run the `./install` script to stow all of the selected modules. If any errors occur, correct them and run the script again.
 
