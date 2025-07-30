@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# check if we are in a git repo
+# make sure we are in a git repo
 if ! git rev-parse --is-inside-work-tree > /dev/null; then
     exit 1
 fi
@@ -8,30 +8,40 @@ fi
 # create empty array to store branches
 branches=()
 
-# get all local branches without remotes
-printf "Finding local branches...\r"
-for i in $(git branch --format "%(refname:short) %(upstream)" | awk '{if (!$2) print $1;}'); do
-    branches+=("$i");
-done
+if [[ $1 = "all" ]]; then
+    fzf_label="Fuzzy Git Switch (With Remotes)"
+    # get all local branches without upstreams
+    printf "Finding local branches...\r"
+    for i in $(git branch --format "%(refname:short) %(upstream)" | awk '{if (!$2) print $1;}'); do
+        branches+=("$i");
+    done
 
-# get all branches from remotes (without repeats)
-printf "Finding remote branches... this may take a while (make sure all remotes are reachable)\r"
-for j in $(git ls-remote -q --heads | sed 's/^.\{52\}//'); do
-    if [[ ! " ${branches[*]} " =~ [[:space:]]${j}[[:space:]] ]]; then
-        branches+=("$j");
-    fi
-done
+    # get all branches from remotes (deduplicated)
+    printf "Finding remote branches... this may take a while (make sure all remotes are reachable)\r"
+    for j in $(git ls-remote -q --heads | awk '{print $2;}' | sed 's/^refs\/heads\///'); do
+        if [[ ! " ${branches[*]} " =~ [[:space:]]${j}[[:space:]] ]]; then
+            branches+=("${j}");
+        fi
+    done
+else
+    fzf_label="Fuzzy Git Switch (Local Only)"
+    # find local branches only (for performance)
+    printf "Finding local branches...\r"
+    for i in $(git branch --format "%(refname:short)"); do
+        branches+=("$i")
+    done
+fi
 
-# get branches and send to fzf
-choice=$(printf "%s\n" "${branches[@]}" | fzf --height 40% --layout reverse --border --border-label="Fuzzy Git Switch")
+# send to fzf
+choice=$(printf "%s\n" "${branches[@]}" | fzf --height 40% --layout reverse --border --border-label="${fzf_label}")
 
 # execute switch if branch was provided
 if [[ -n "$choice" ]]; then
-
     # Fetch new branches from remotes.
     printf "Fetching from remotes...\n"
     git fetch
-
     git switch "$choice"
+else
+    echo "fatal: no branch selected"
 fi
 
