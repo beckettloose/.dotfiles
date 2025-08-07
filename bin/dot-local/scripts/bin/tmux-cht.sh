@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-selected=$(cat ~/.local/scripts/tmux-cht-languages ~/.local/scripts/tmux-cht-command | fzf)
+selected=$(cat ~/.local/scripts/resources/tmux-cht-languages ~/.local/scripts/resources/tmux-cht-command | fzf)
 
 if [ -z "$selected" ]; then
     exit 1

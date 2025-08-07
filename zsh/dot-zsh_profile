@@ -15,7 +15,7 @@ export KUBE_EDITOR=$VIM
 #export DOTFILES=$HOME/.dotfiles
 
 # Set up our path variable
-path=("$HOME/.local/scripts" $path)
+path=("$HOME/.local/scripts/bin" $path)
 path=("$HOME/.local/bin" $path)
 
 export PATH
