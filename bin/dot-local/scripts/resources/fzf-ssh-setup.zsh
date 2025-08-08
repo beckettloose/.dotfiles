@@ -62,7 +62,10 @@ function _fzf-ssh {
 
     if [[ $instant == "true" ]]; then
         echo "Selected Host: $choice"
-        ssh "$choice"
+        zle .kill-whole-line
+        BUFFER="ssh $choice"
+        zle .accept-line
+        return
     else
         zle .kill-whole-line
         zle .reset-prompt
