@@ -38,6 +38,11 @@ alias reload="exec zsh"
 # wget but let the server tell us what the filename should be
 alias dl="wget --content-disposition"
 
+# tmux shortcuts
+alias tls="tmux list-sessions"
+alias ta="tmux attach"
+alias tcl="tmux clock-mode"
+
 # Print return code of last executed command
 rtc() {
     echo "$?"
