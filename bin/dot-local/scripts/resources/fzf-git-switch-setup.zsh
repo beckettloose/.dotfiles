@@ -20,7 +20,7 @@ function _fzf-git-switch {
         done
 
         # get all branches from remotes (and deduplicate)
-        printf "Finding remote branches... (if this is taking a while, make sure all remotes are reachable)\r"
+        printf "Finding remote branches...\r"
         for j in $(git ls-remote -q --heads | awk '{print $2;}' | sed 's/^refs\/heads\///'); do
             if [[ ! " ${branches[*]} " =~ [[:space:]]${j}[[:space:]] ]]; then
                 branches+=("${j}");
@@ -30,7 +30,7 @@ function _fzf-git-switch {
         # find local branches only (better performance since no network access)
         fzf_label="Fuzzy Git Switch (Local Branches Only)"
         printf "Finding local branches...\r"
-        for i in $(git branch --format "%(refname:short)"); do
+        for i in $(git branch --format "%(refname:short)" | sed '/[[:space:]]/d'); do
             branches+=("$i")
         done
     fi
