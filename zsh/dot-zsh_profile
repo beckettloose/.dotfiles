@@ -43,28 +43,24 @@ zshprof() {
 
 ### Set up zsh key bindings ###
 
-# Quick sessionizer shortcut
-function _tmux-sessionizer {
-    zle .kill-whole-line
-    # Restore stdin/out so that tmux attach works when called from a zsh widget
-    ( exec </dev/tty; exec <&1; tmux-sessionizer)
-    zle .reset-prompt
-}
-
-zle -N _tmux-sessionizer
-bindkey ^f _tmux-sessionizer
+# Tmux sessionizer as zle widget
+tmux_sessionizer_setup="$HOME/.local/scripts/resources/tmux-sessionizer-setup.zsh"
+if [[ -f "$tmux_sessionizer_setup" ]]; then
+    source "$tmux_sessionizer_setup"
+    bindkey "^f" _tmux-sessionizer
+fi
 
 # Quick ssh shortcut
-fzf_ssh_setup_script="$HOME/.local/scripts/resources/fzf-ssh-setup.zsh"
-if [[ -f "$fzf_ssh_setup_script" ]]; then
-    source "$fzf_ssh_setup_script"
+fzf_ssh_setup="$HOME/.local/scripts/resources/fzf-ssh-setup.zsh"
+if [[ -f "$fzf_ssh_setup" ]]; then
+    source "$fzf_ssh_setup"
     bindkey ^s _fzf-ssh
 fi
 
 # Quick git switch shortcut
-fzf_git_switch_setup_script="$HOME/.local/scripts/resources/fzf-git-switch-setup.zsh"
-if [[ -f "$fzf_git_switch_setup_script" ]]; then
-    source "$fzf_git_switch_setup_script"
+fzf_git_switch_setup="$HOME/.local/scripts/resources/fzf-git-switch-setup.zsh"
+if [[ -f "$fzf_git_switch_setup" ]]; then
+    source "$fzf_git_switch_setup"
     bindkey "^[s" _fzf-git-switch
     bindkey "^[S" _fzf-git-switch-all
 fi

@@ -11,42 +11,32 @@
 # tmux config for quick access.
 #
 # When this script is executed, it searches the list of provided directories for
-# all subdirectories or symlinks to directories with a depth of 1. The user is
-# then prompted to select a directory with an fzf prompt. Once the user selects
-# a directory, a tmux session corresponding to it will be created (or attached,
-# if it already exists). All shell instances created in this session will
-# default to the selected directory for convenience.
+# all subdirectories at a depth of 1. The user is then prompted to select a
+# directory with an fzf prompt. Once the user selects a directory, a tmux
+# session corresponding to it will be created (or attached, if it already
+# exists). All shell instances created in this session will default to the
+# selected directory for convenience.
 
-# check if we have 1 argument
 if [[ $# -eq 1 ]]; then
-    # if the first argument == 1, then we have already windowized ourself
     if [[ $1 -eq 1 ]]; then
         :
     fi
-# if we don't have an argument and we are in tmux, open as a new window in the
-# active tmux session and run this script with the tmux flag set, then exit.
+# If we are already in tmux, open ourselves in a window
 elif [[ -n $TMUX ]]; then
     tmux neww -n sessionizer "tmux-sessionizer 1"
     exit 0
 fi
 
-# Create empty array to store our directories
 dirs=()
 
-# Find all symlinked directories
-for i in $(find ~/projects ~ ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type l); do
-    if [[ -d $i ]]; then dirs+=("$i"); fi
-done
+# Find the directories we want to pick from
+while IFS= read -r -d '' i; do
+    if [[ -d "$i" ]]; then dirs+=("$i"); fi
+done <  <(find ~ ~/projects ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type d -print0)
 
-# Find all normal directories
-for j in $(find ~/projects ~ ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type d); do
-    dirs+=("$j")
-done
-
-# Use fzf to let the user pick a directory
+# Format directory list and pipe to fzf picker
 selected=$(printf "%s\n" "${dirs[@]#$HOME/}" | fzf --scheme=path)
 
-# If the user didn't select a directory, exit.
 if [[ -z $selected ]]; then
     exit 0
 fi
@@ -57,29 +47,25 @@ selected="${HOME}/${selected}"
 # Replace dots with underscores for tmux session name
 selected_name=$(basename "$selected" | tr . _)
 
-# Check if tmux server is running (this returns the PID if it exists)
 tmux_running=$(pgrep tmux)
 
-# If tmux isn't running at all
 if [[ -z $tmux_running ]]; then
-    # Create a new session and attach to it
+    # Create a new session and attach to it immediately
     tmux new-session -s "$selected_name" -c "$selected"
     exit 0
 fi
 
-# If tmux is running, but doesn't have the desired session
 if ! tmux has-session -t="$selected_name" 2> /dev/null; then
     # Create the new session in the background
     tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-# If we are already in a tmux session
+# If we are not currently in tmux
 if [[ -z $TMUX ]]; then
-    # Switch to the desired session
     tmux attach -d -t="$selected_name"
     exit 0
 fi
 
-# Otherwise, attach to the existing session
+# Otherwise, switch to the existing session
 tmux switch-client -t "$selected_name"
 
