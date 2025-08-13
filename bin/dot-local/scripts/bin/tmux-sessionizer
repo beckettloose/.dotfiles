@@ -34,13 +34,11 @@ fi
 dirs=()
 
 # Find all symlinked directories
-# shellcheck disable=SC2044 # works fine, and much simpler than `find -exec`
 for i in $(find ~/projects ~ ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type l); do
     if [[ -d $i ]]; then dirs+=("$i"); fi
 done
 
 # Find all normal directories
-# shellcheck disable=SC2044 # works fine, and much simpler than `find -exec`
 for j in $(find ~/projects ~ ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type d); do
     dirs+=("$j")
 done

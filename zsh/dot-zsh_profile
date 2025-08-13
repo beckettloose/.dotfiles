@@ -1,23 +1,14 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
-#PERSONAL=$XDG_CONFIG_HOME/personal
-#source $PERSONAL/env
-#for i in `find -L $PERSONAL`; do
-#	source $i
-#done
-
 ### Set up important env vars ###
 
 VIM="nvim"
 export EDITOR=$VIM
 export GIT_EDITOR=$VIM
 export KUBE_EDITOR=$VIM
-#export DOTFILES=$HOME/.dotfiles
 
-# Set up our path variable
 path=("$HOME/.local/scripts/bin" $path)
 path=("$HOME/.local/bin" $path)
-
 export PATH
 
 ### Set up personal aliases and functions ###
@@ -25,17 +16,14 @@ export PATH
 # Map vim and vi as shortcuts to nvim
 alias vim="nvim"
 alias vi="nvim"
-# alias zshconfig="vi ~/.zshrc"
-# alias zshprofile="vi ~/.zsh_profile"
-# alias ohmyzsh="vi ~/.oh-my-zsh"
 
 # Reloads the shell instance
 # Note that using this repeatedly in the same shell will progressively make
 # environment variables like PATH get longer as each successive reload appends
-# more entries.
+# more entries. Avoid using this repeatedly
 alias reload="exec zsh"
 
-# wget but let the server tell us what the filename should be
+# wget but let the server tell us what the file name should be
 alias dl="wget --content-disposition"
 
 # tmux shortcuts
@@ -80,24 +68,6 @@ if [[ -f "$fzf_git_switch_setup_script" ]]; then
     bindkey "^[s" _fzf-git-switch
     bindkey "^[S" _fzf-git-switch-all
 fi
-
-
-# function _fzf-git-switch {
-#     fzf-git-switch
-#     zle .reset-prompt
-# }
-
-# zle -N _fzf-git-switch
-# bindkey "^[s" _fzf-git-switch
-
-# Quick git swith with remote branches
-# function _fzf-git-switch-all {
-#     fzf-git-switch all
-#     zle .reset-prompt
-# }
-
-# zle -N _fzf-git-switch-all
-# bindkey "^[S" _fzf-git-switch all
 
 # unbind fwd-i-search
 # bindkey -r ^s

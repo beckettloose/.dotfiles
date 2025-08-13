@@ -93,13 +93,8 @@ source ~/.zsh_dist
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
 # Load all of our user-specific things like aliases and keybinds from this file
 source ~/.zsh_profile
 
-# Uncomment the line below to print the output of the zprof shell startup profiler
+# Run zprof if the environment variable is set
 [ -z "$ZPROF" ] || zprof
