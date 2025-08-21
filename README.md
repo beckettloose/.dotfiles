@@ -25,6 +25,7 @@ You are more than welcome to use this repo as a template for managing your own d
 - neovim (My preferred text editor)
 - fzf ("Fuzzy finder" for efficiently searching large lists, used in a few of my scripts)
 - ripgrep (Recursively search a directory for lines matching a pattern)
+- fd-find (better alternative to `find`)
 - [omz-git-branch](https://github.com/cpwillis/omz-git-branch) (To truncate long branch names in omz prompt)
 
 ## How this repo works
