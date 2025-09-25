@@ -1,25 +1,29 @@
 # Load the system defaults
 .include /etc/pulse/default.pa
 
-# Create a virtual sink mapped to ASIO 1 and 2 for main system outputs
-load-module module-remap-sink sink_name=remap_main_out sink_properties="device.description='Main Audio Output (remapped to XR18 ASIO 1/2)'" master=alsa_output.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-output channels=2 master_channel_map=front-left,front-right channel_map=front-left,front-right remix=no
+### XR18 VIRTUAL SINKS ###
 
-# Create a virtual sink mapped to ASIO 6 for voice chat outputs
-load-module module-remap-sink sink_name=remap_chat_out sink_properties="device.description='Chat Audio Output (remapped to XR18 ASIO 6)'" master=alsa_output.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-output channels=1 master_channel_map=lfe channel_map=front-left remix=no
+# Create a virtual sink mapped to XR18 inputs 1 and 2 for main system sound
+load-module module-remap-sink sink_name=remap_main_out sink_properties="device.description='Main Audio Output (XR18 In 1/2)'" master=alsa_output.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-output channels=2 master_channel_map=front-left,front-right channel_map=front-left,front-right remix=no
 
-# Create a virtual sink mapped to ASIO 7 and 8 for media outputs
-load-module module-remap-sink sink_name=remap_media_out sink_properties="device.description='Media Audio Output (remapped to XR18 ASIO 7/8)'" master=alsa_output.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-output channels=2 master_channel_map=side-left,side-right channel_map=front-left,front-right remix=no
+# Create a virtual sink mapped to XR18 input 6 for voice chat
+load-module module-remap-sink sink_name=remap_chat_out sink_properties="device.description='Chat Audio Output (XR18 In 6)'" master=alsa_output.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-output channels=1 master_channel_map=lfe channel_map=front-left remix=no
 
+# Create a virtual sink mapped to XR18 inputs 7 and 8 for media
+load-module module-remap-sink sink_name=remap_media_out sink_properties="device.description='Media Audio Output (XR18 In 7/8)'" master=alsa_output.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-output channels=2 master_channel_map=side-left,side-right channel_map=front-left,front-right remix=no
 
-# Create a virtual source mapped to ASIO 3 and 4 for stream audio return
-load-module module-remap-source source_name=remap_stream_in source_properties="device.description='Stream Audio Input (remapped to XR18 ASIO 3/4)'" master=alsa_input.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-input channels=2 master_channel_map=rear-left,rear-right channel_map=front-left,front-right remix=no
+### XR18 VIRTUAL SOURCES ###
 
-# Create a virtual source mapped to ASIO 6 for voice chat inputs
-load-module module-remap-source source_name=remap_mic_in source_properties="device.description='Microphone Audio Input (remapped to XR18 ASIO 6)'" master=alsa_input.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-input channels=1 master_channel_map=lfe channel_map=front-left remix=no
+# Create a virtual source mapped to XR18 outputs 3 and 4 for stream audio return
+load-module module-remap-source source_name=remap_stream_in source_properties="device.description='Stream Audio Input (XR18 Out 3/4)'" master=alsa_input.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-input channels=2 master_channel_map=rear-left,rear-right channel_map=front-left,front-right remix=no
 
+# Create a virtual source mapped to XR18 output 6 for voice chat inputs
+load-module module-remap-source source_name=remap_mic_in source_properties="device.description='Microphone Audio Input (XR18 Out 6)'" master=alsa_input.usb-BEHRINGER_X18_XR18_32065F4B-00.multichannel-input channels=1 master_channel_map=lfe channel_map=front-left remix=no
+
+### SET DEFAULT INTERFACES ###
 
 # Set our default sink to the main output
 set-default-sink remap_main_out
 
-# Set our default sink to the mic input
+# Set our default source to the mic input
 set-default-source remap_mic_in
