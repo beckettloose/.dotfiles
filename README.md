@@ -12,6 +12,7 @@ You are more than welcome to use this repo as a template for managing your own d
 - The custom tmux configuration is forked from [gpakosz/.tmux](https://github.com/gpakosz/.tmux)
 - The Neovim config is based on ThePrimeagen's nvim config and [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
 - The cht.sh and tmux-sessionizer scripts are adapted from ThePrimeagen
+- A bunch of utility scripts from [Evan Hahn](https://evanhahn.com/scripts-i-wrote-that-i-use-all-the-time/)
 
 ## Requirements
 

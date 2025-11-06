@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# borrowed from Evan Hahn
+set -u
+
+"$@"
+while [[ "$?" -eq 0 ]]; do
+  sleep 0.5
+  "$@"
+done

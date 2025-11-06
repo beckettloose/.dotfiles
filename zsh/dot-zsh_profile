@@ -36,6 +36,34 @@ rtc() {
     echo "$?"
 }
 
+# mkdir and cd into it
+mkcd() {
+    \mkdir -p "$1"
+    cd "$1"
+}
+
+# make temp directory and cd into it
+tempe () {
+  cd "$(mktemp -d)"
+  chmod -R 0700 .
+  if [[ $# -eq 1 ]]; then
+    \mkdir -p "$1"
+    cd "$1"
+    chmod -R 0700 .
+  fi
+}
+
+# play sound effect based on return code of last command
+boop () {
+  local last="$?"
+  if [[ "$last" == '0' ]]; then
+    sfx good
+  else
+    sfx bad
+  fi
+  $(exit "$last")
+}
+
 # profile zsh startup time without modifying config file
 zshprof() {
     ZPROF=1 zsh -i -c exit | less

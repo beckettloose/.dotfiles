@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+# borrowed from Evan Hahn
+require 'securerandom'
+print SecureRandom.uuid

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# borrowed from Evan Hahn
+set -e
+set -u
+
+head -n "$1" | tail -n 1
