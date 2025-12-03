@@ -96,3 +96,6 @@ fi
 # unbind fwd-i-search
 # bindkey -r ^s
 
+# search aliases using grep
+alias agrep="alias | grep"
+
