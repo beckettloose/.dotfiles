@@ -63,7 +63,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 Run the following command to clone the dotfiles repository
 ```bash
-git clone https://github.com/beckettloose/.dotfiles.git ~/.dotfiles
+git clone --recurse-submodules https://github.com/beckettloose/.dotfiles.git ~/.dotfiles
 ```
 
 Run the following commands to create the `.zsh_system` file, populate it with the desired modules (adjust as required), and load the environment variables for the initial run of the stow script.
@@ -89,10 +89,6 @@ If you wish to install Powerlevel10k, run the following command.
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 ```
 
-The theme will be automatically loaded next time you log in (or after running `exec zsh`).
+The theme will be automatically loaded next time you log in (or after running `reload`).
 
 ## Installing Additional Software (WIP)
-
-### Installing asdf-vm (Instructions WIP)
-
-Change to the `~/external` directory, then run the following command to clone asdf-vm
