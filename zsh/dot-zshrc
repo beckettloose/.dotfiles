@@ -93,6 +93,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Ensure $PATH is deduplicated. This helps the reload command work properly
+typeset -aU path
+
 # Load system-specific zsh configuration.
 # This file is unique to each individual system, and must be created manually.
 # Use this file for setting up env variables like $PATH or loading completions.
