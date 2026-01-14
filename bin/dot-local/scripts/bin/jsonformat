@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+
+# Usage: cat > file.json | jsonformat
+#        jsonformat < file.json
+#
+# Takes json on stdin and pretty-prints it to stdout
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

@@ -1,4 +1,10 @@
 #!/usr/bin/env ruby
+
+# Usage: uuid
+#
+# Prints a v4 UUID.
+#
 # borrowed from Evan Hahn
+
 require 'securerandom'
 print SecureRandom.uuid

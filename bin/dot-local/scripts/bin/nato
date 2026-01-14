@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+
+# Usage: nato text (returns Tango Echo X-ray Tango)
+#
+# Spells the given text using the phonetic alphabet.
+#
 # borrowed from Evan Hahn
 
 DICTIONARY = {

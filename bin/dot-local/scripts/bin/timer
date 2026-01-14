@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+# Usage: timer 10m
+#
+# Waits for the specified period, then plays a sound effect upon completion.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

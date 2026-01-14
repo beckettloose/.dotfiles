@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# idek what this does, I've never used it lol
+
 branch_name=$(basename $1)
 session_name=$(tmux display-message -p "#S")
 clean_name=$(echo $branch_name | tr "./" "__")

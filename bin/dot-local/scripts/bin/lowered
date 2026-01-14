@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+# Usage: echo FOO | lowered (returns foo)
+#
+# Converts a string on stdin to lowercase.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

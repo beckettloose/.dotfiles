@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+# Usage: mksh foo.sh
+#
+# Creates a file, marks it as executable, and adds a bash shebang.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

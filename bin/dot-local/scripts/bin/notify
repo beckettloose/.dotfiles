@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
+#
+# Usage: long_process ; notify "done"
+#
+# Sends an OS notification.
+#
 # borrowed from Evan Hahn
+
 require 'date'
 require 'json'
 

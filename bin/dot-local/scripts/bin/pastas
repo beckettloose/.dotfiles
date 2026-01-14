@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
+
+# Usage: pastas > everything_i_copied.txt
+#        pastas | wget -i -
+#
+# Waits for new content to appear on the clipboard, then sends it to stdout.
+# Runs in the background until stopped manually.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

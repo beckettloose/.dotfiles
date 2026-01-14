@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+
+# Usage: prettypath
+#
+# Prints the contents of the $PATH environment variable, splitting each entry
+# into its own line.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 

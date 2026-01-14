@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+
+# Usage: pasta | some_command
+#        pasta > file.txt
+#
+# System agnostic wrapper for xclip and pbpaste
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
+
+# Usage: url protocol://host.tld/document?query=text#hash
+#
+# Parses a URL into the individual components.
+#
 # borrowed from Evan Hahn
+
 import argparse
 from urllib.parse import urlparse, parse_qsl
 

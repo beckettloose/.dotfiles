@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+# Usage: trash a.txt b.png
+#
+# Moves the specified files to the trash. Works on macOS and Linux.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

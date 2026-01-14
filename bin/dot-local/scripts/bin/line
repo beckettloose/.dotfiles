@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+
+# Usage: cat big_file | line 10
+#        line 10 < big_file
+#
+# Print a specific line number from a file
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 

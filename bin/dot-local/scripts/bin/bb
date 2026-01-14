@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+
+# Usage: bb my_command
+#
+# Really really run a program in the background.
+# You'll never hear from it again. Like `my_command &` but more.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 

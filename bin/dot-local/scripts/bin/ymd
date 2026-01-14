@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+# Usage: ymd
+#
+# Prints the date in yyyy-mm-dd format.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

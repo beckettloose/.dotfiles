@@ -1,0 +1,7 @@
+#!/bin/env bash
+
+# Usage: scripts
+#
+# Fuzzy find through my utility scripts, optionally preview the first few lines.
+
+catbin $(find ~/.local/scripts/bin -mindepth 1 -maxdepth 1 | xargs -n1 basename | fzf) | head -n 25

@@ -1,4 +1,11 @@
 #!/usr/bin/env ruby
+
+# Usage: murder foo
+#        murder 1234
+#
+# A wrapper around kill that first sends `-15`, then `-2`, then `-1`, and
+# finally `-9`.
+#
 # borrowed from Evan Hahn
 
 SIGNALS = [

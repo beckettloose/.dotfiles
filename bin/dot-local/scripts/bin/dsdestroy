@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+# Usage: dsdestroy
+#
+# Recursively delete all .DS_Store files in the current directory.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 set -o pipefail

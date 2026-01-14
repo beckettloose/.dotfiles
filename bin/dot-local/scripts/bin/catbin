@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+
+# Usage: catbin something_in_your_path
+#
+# Basically just `cat "$(which foo)"`. Useful for seeing the source code of a
+# file in your path.
+#
 # borrowed from Evan Hahn
+
 set -e
 set -u
 
