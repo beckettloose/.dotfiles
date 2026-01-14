@@ -71,6 +71,9 @@ zshprof() {
 
 ### Set up zsh key bindings ###
 
+export KEYTIMEOUT=1
+bindkey '^[' .vi-cmd-mode
+
 # Tmux sessionizer as zle widget
 tmux_sessionizer_setup="$HOME/.local/scripts/resources/tmux-sessionizer-setup.zsh"
 if [[ -f "$tmux_sessionizer_setup" ]]; then
