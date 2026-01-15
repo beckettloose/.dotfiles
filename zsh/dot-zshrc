@@ -93,6 +93,16 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+redraw_p10k_prompt() {
+    [[ "${ZSH_THEME}" == "powerlevel10k/powerlevel10k" ]] || return
+
+    local f
+    for f in chpwd "${chpwd_functions[@]}" precmd "${precmd_functions[@]}"; do
+        [[ "${+functions[$f]}" == 0 ]] || "$f" &>/dev/null || true
+    done
+    p10k display -r
+}
+
 # Ensure $PATH is deduplicated. This helps the reload command work properly
 typeset -aU path
 
