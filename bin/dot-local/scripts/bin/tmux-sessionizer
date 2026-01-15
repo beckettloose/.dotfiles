@@ -32,7 +32,7 @@ dirs=()
 # Find the directories we want to pick from
 while IFS= read -r -d '' i; do
     if [[ -d "$i" ]]; then dirs+=("$i"); fi
-done <  <(find ~ ~/projects ~/work ~/personal ~/external -mindepth 1 -maxdepth 1 -type d -print0)
+done <  <(find ~ ~/external ~/personal ~/work -mindepth 1 -maxdepth 1 -type d -print0)
 
 # Format directory list and pipe to fzf picker
 selected=$(printf "%s\n" "${dirs[@]#$HOME/}" | fzf --scheme=path)
