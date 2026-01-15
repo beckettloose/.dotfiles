@@ -21,7 +21,7 @@ Run the following commands in the terminal to install common tools
 
 ```sh
 sudo apt update
-sudo apt install zsh wget git stow tmux fzf ripgrep fd-find
+sudo apt install zsh wget git stow tmux fzf ripgrep fd-find ncal
 ```
 
 ### System Packages for MacOS Based Systems
