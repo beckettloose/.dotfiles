@@ -45,7 +45,7 @@ function _fzf-git-switch {
         fi
         git switch "$choice"
         zle .reset-prompt
-        redraw_p10k_prompt # only required if branch changes
+        redraw_p10k_prompt # only required if HEAD changes
         return
     else
         zle .reset-prompt

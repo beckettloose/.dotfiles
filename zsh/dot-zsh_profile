@@ -94,6 +94,13 @@ if [[ -f "$fzf_git_switch_setup" ]]; then
     bindkey "^[S" _fzf-git-switch-all
 fi
 
+# Quick git checkout tag shortcut
+fzf_git_checkout_tag_setup="$HOME/.local/scripts/resources/fzf-git-checkout-tag-setup.zsh"
+if [[ -f "$fzf_git_checkout_tag_setup" ]]; then
+    source "$fzf_git_checkout_tag_setup"
+    bindkey "^[t" _fzf-git-checkout-tag
+fi
+
 # unbind fwd-i-search
 # bindkey -r ^s
 
