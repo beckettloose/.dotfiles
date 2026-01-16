@@ -1,3 +1,7 @@
+#!/bin/env zsh
+# this shebang isn't strictly necessary but helps neovim recognize this file as
+# a zsh script rather than a conf file since it uses a non-standard name.
+
 # Mac OS Platform Specific zsh configuration
 
 # initialize completions with ZSH's compinit.
