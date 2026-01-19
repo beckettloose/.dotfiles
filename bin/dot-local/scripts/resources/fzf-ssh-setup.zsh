@@ -8,9 +8,6 @@
 # searching a preconfigured list. It is recommended to bind this to a keyboard
 # shortcut for easy access. Requires init code in zshrc/zsh_profile to work.
 #
-# Currently Broken Features
-#   - move zle cursor back to username
-#
 # Basic config file example:
 #
 # ---
@@ -24,11 +21,13 @@
 #   defaults:
 #     instant: false
 #     user: ""
+#     edituser: false
 # hosts:
 #   - key: "Example Host"
 #     host: "192.168.0.1"
 #     user: "defaultuser"
 #     instant: true
+#     edituser: true
 #   - key: "Second Host"
 #     host: "192.168.0.2"
 #
@@ -112,6 +111,16 @@ function _fzf-ssh {
         user=$(yq '.config.defaults.user' $FUZZY_SSH_CONFIG_FILE | sed 's/"//g')
     fi
 
+    # check if the host speicifies the edituser parameter
+    host_has_edituser_key=$(yq ".hosts.[] | select(.key == \"${choice}\") | has(\"edituser\")" $FUZZY_SSH_CONFIG_FILE)
+    if [[ "$host_has_edituser_key" == true ]]; then
+        # host has the edituser key, use its value
+        edituser=$(yq ".hosts.[] | select(.key == \"${choice}\") | .edituser" $FUZZY_SSH_CONFIG_FILE)
+    else
+        # fallback to default edituser value
+        edituser=$(yq '.config.defaults.edituser' $FUZZY_SSH_CONFIG_FILE)
+    fi
+
     # get the host parameter
     host=$(yq ".hosts.[] | select(.key == \"${choice}\") | .host" $FUZZY_SSH_CONFIG_FILE | sed 's/"//g')
 
@@ -135,7 +144,16 @@ function _fzf-ssh {
         # prepare command but do not execute it
         zle .kill-whole-line
         zle .reset-prompt
-        zle -U "${cmdline}"
+        BUFFER="${cmdline}"
+        if [[ "$edituser" == true ]]; then
+            # move the cursor to the end of the username
+            CURSOR="3"
+            CURSOR+=$(echo "${user}" | wc -c)
+        else
+            # move cursor to end of buffer
+            CURSOR="$#BUFFER"
+        fi
+        return
     fi
 }
 
