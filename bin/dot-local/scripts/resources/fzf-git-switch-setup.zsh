@@ -14,13 +14,13 @@ function _fzf-git-switch {
     if [[ $1 = "all" ]]; then
         # get all local branches without upstreams
         fzf_label="Fuzzy Git Switch (Include Remotes)"
-        printf "Finding local branches...\r"
+        printf "fzf-git-switch: finding local branches\r"
         for i in $(git branch --format "%(refname:short) %(upstream)" | awk '{if (!$2) print $1;}'); do
             branches+=("$i");
         done
 
         # get all branches from remotes (and deduplicate)
-        printf "Finding remote branches...\r"
+        printf "fzf-git-switch: finding remote branches\r"
         for j in $(git ls-remote -q --heads | awk '{print $2;}' | sed 's/^refs\/heads\///'); do
             if [[ ! " ${branches[*]} " =~ [[:space:]]${j}[[:space:]] ]]; then
                 branches+=("${j}");
@@ -29,7 +29,7 @@ function _fzf-git-switch {
     else
         # find local branches only (better performance since no network access)
         fzf_label="Fuzzy Git Switch (Local Branches Only)"
-        printf "Finding local branches...\r"
+        printf "fzf-git-switch: finding local branches\r"
         for i in $(git branch --format "%(refname:short)" | sed '/[[:space:]]/d'); do
             branches+=("$i")
         done
@@ -40,7 +40,7 @@ function _fzf-git-switch {
     if [[ -n "$choice" ]]; then
         if [[ $1 = "all" ]]; then
             # Fetch any new branches from remotes.
-            printf "Fetching from remotes...\n"
+            printf "fzf-git-switch: fetching from remotes\n"
             git fetch
         fi
         git switch "$choice"

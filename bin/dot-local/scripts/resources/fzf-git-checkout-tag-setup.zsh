@@ -16,8 +16,7 @@ function _fzf-git-checkout-tag {
     tags=()
 
     # find all tags present locally. we won't fetch here to save performance
-    fzf_label="Fuzzy Git Tag Search"
-    # printf "Finding local git tags...\r"
+    fzf_label="Fuzzy Git Tag Checkout"
 
     for i in $(git tag --sort=-v:refname -n --list "${1}*" | awk '{print $1}'); do
         tags+=("$i")
