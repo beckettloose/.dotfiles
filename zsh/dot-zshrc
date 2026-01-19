@@ -115,9 +115,11 @@ typeset -aU path
 # Use this file for setting up env variables like $PATH or loading completions.
 source ~/.zsh_system
 
-# Load platform-specific zsh configuration.
+# Load platform-specific zsh configuration if present.
 # This file should be automatically linked by the dotfiles installer.
-source ~/.zsh_dist
+if [ -f ~/.zsh_dist ]; then
+    source ~/.zsh_dist
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

@@ -1,4 +1,4 @@
-# System Setup
+# SETUP.md
 
 This document provides basic instructions for setting up a Linux or macOS user account to my preferred specifications. Directory structure, utility programs, and dotfiles setup will be covered.
 
@@ -71,7 +71,7 @@ Run the following commands to create the `.zsh_system` file, populate it with th
 ```bash
 touch "$HOME/.zsh_system"
 echo "export DOTFILES=\"$HOME/.dotfiles\"" >> "$HOME/.zsh_system"
-echo "export DOTFILES_STOW_FOLDERS=\"bin,git,nvim,tmux,zsh,zsh_dist_wsl\"" >> "$HOME/.zsh_system"
+echo "export DOTFILES_STOW_FOLDERS=\"bin,git,nvim,tmux,zsh\"" >> "$HOME/.zsh_system"
 ```
 
 Now, open the dotfiles directory and run the install script.
