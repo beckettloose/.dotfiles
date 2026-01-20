@@ -13,10 +13,10 @@ You are more than welcome to use this repo as a template, but you will likely wa
     - Use tmux for windows and sessions rather than the terminal emulator itself (allows the use of any terminal emulator, or even working over ssh)
 - Prioritize simplicity of user experience
     - Don't clutter up the prompt line with unimportant information or fancy themes
-    - Add functionality without forcing complex features or workflows
+    - Add functionality without forcing complex workflows
     - Create more efficient keybinds without overriding defaults
 - Optimize performance and reduce waiting times
-    - Use powerlevel10k to keep shell loading time under 500ms and prompt return time around 100ms
+    - Use powerlevel10k to keep new shell startup time under 500ms and prompt return time around 100ms
     - Use snacks.nvim quickfile and bigfile to optimize loading times, especially for big files (2GiB test file opens in ~10sec)
 
 ## Inspiration
@@ -25,6 +25,13 @@ You are more than welcome to use this repo as a template, but you will likely wa
 - My neovim configuration was adapted from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but split into multiple files like ThePrimeagen's.
 - The tmux-sessionizer and tmux-cht.sh scripts are adapted from ThePrimeagen
 - A bunch of utility scripts from [Evan Hahn](https://evanhahn.com/scripts-i-wrote-that-i-use-all-the-time/)
+
+## Cool Features
+
+- GNU stow for automatically deploying config files
+- zsh + oh-my-zsh + powerlevel10k: lightning fast and simple, yet extremely powerful combination (when configured correctly)
+- Simple tmux config with revised keybinds prioritizing speed
+- Powerful neovim configuration with lots of useful macros and plugins
 
 ## Requirements
 
@@ -62,7 +69,7 @@ This is a basic overview of how to use the dotfiles repo. For a complete guide o
 4. Create and source the `~/.zsh_system` file that sets up your environment variables (including `DOTFILES_STOW_FOLDERS` and `DOTFILES` if required)
 5. Run the `./install` script to stow all of the selected modules. If any errors occur, correct them and run the script again.
 
-## Important Items
+## Important Files and Directories
 
 ### Modules
 
@@ -84,3 +91,86 @@ This is a basic overview of how to use the dotfiles repo. For a complete guide o
 - SETUP.md: Detailed instructions on system configuration
 - clean-env: unstow all modules.
 - install: stow all modules in the DOTFILES_STOW_FOLDERS env var.
+
+## Module Design and Features
+
+### bin
+
+The `bin` module contains useful shell scripts and their associated data. Data is located in `~/.config/`, and the scripts themselves are located in `~/.local/scripts/`. This contains the `bin/` directory which is for user-executable programs and the `resources/` directory for non-user executable programs (zle widget setup scripts, etc.).
+
+Scripts of Note:
+- `tmux-sessionizer`: quickly create and attach to tmux sessions named after project directories
+- `copy` and `pasta`: platform agnostic wrappers for pbcopy and xclip that work on Mac and Linux
+- `prettypath`: prints each path in `$PATH` on a separate line
+- `fzf-ssh-setup`: quickly search ssh hosts using fzf
+- `fzf-git-switch-setup`: quickly switch git branches (local or remote) using fzf
+- `fzf-git-checkout-tag-setup`: quickly checkout a git tag using fzf
+- `tmux-sessionizer-setup`: use `tmux-sessionizer` from a zle widget
+
+### git
+
+The `git` module contains my `.gitconfig` file. The `[includeIf "gitdir:~/work/"]` section activates a secondary `.gitconfig` when working inside of the `~/work/` directory, overriding the `user.email` value. This file is not committed to the repository for security purposes. Additionally, there are the `git lg` aliases which print a prettified commit graph in 3 different verbosity levels.
+
+### lazygit
+
+The lazygit module simply contains the `~/.config/lazygit/config.yml` file. Nothing special in here other than some personal preferences.
+
+### nvim
+
+The `nvim` module contains my Neovim configuration files, symlinked to `~/.config/nvim`. Complete details can be found [here](https://github.com/beckettloose/.nvim).
+
+### p10k
+
+The `p10k` module contains the `~/.p10k.zsh` file used to configure [powerlevel10k](https://github.com/romkatv/powerlevel10k). The file header includes the options used to generate this file, however I have made the following changes afterwords:
+
+- Replace the VCS branch icon with a nerd font symbol
+- Change the VCS untracked symbol from `?` to `U`
+
+### pulseaudio
+
+The `pulseaudio` module contains a special configuration for PulseAudio specific to my Linux desktop PC, and is intended to interface with my Behringer XR-18 mixer. The mixer presents itself as a single ~18 channel bidirectional device, so this handles the creation of virtual sinks and sources that map to mono channels or stereo pairs on the main device. I can then use `pavucontrol` to route individual apps to different mixer channels.
+
+### tmux
+
+The `tmux` module contains my tmux configuration file. This used to be a much more complicated system forked from [gpakosz/.tmux](https://github.com/gpakosz/.tmux), but I wanted something more simple and easy to modify. Features of note are listed below:
+
+- Change prefix to `C-a` to allow nested `screen` sessions
+- Add shortcut for reloading config file
+- Shortcuts for `tmux-sessionizer` and `tmux-cht.sh` scripts
+- Start numbering windows and panes at 1
+- Disable automatic window renaming
+- Add non-prefixed shortcut for renaming current window
+- Automatically renumber windows when one is closed
+- Use hjkl keys to navigate and manipulate panes and windows
+- Select windows by number with `M-1` through `M-0`
+- Create new window with `M-c`
+- Vim-style shortcuts for copy mode, with system clipboard support
+- Custom color scheme (trying to use only ANSI colors but I might be giving up on that)
+
+### tpm_fido (deprecated)
+
+I made this to test tpm-fido on my desktop Linux PC but no longer need it. This will be removed in the future.
+
+### wezterm
+
+The `wezterm` module contains my Wezterm configuration file. My wezterm configuration is relatively simple and has the following parameters:
+
+- `80x20` initial window size
+- Default font size of 15
+- Tokyo Night color scheme
+- No window padding
+- Fixed window size increments
+- Disabled tab bar
+- Disabled splitting shortcuts
+
+### zsh
+
+WIP
+
+### zsh_macos
+
+WIP
+
+### zsh_mint
+
+WIP
