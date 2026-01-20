@@ -108,6 +108,9 @@ fi
 # unbind fwd-i-search
 # bindkey -r ^s
 
+# unbind fzf cd
+bindkey -r "^[c"
+
 # search aliases using grep
 alias agrep="alias | grep"
 
