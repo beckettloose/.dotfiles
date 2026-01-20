@@ -1,0 +1,22 @@
+# lazygit config.yml
+gui:
+  mouseEvents: false
+  shortTimeFormat: 03:04
+  nerdFontsVersion: 3
+  filterMode: fuzzy
+
+git:
+  commit:
+    signOff: false # maybe want to change this eventually
+    autoWrapCommitMessage: true
+    autoWrapWidth: 72
+  merging:
+    manualCommit: true
+  autoFetch: false
+  autoRefresh: true
+
+update:
+  method: prompt
+  days: 14
+
+notARepository: quit

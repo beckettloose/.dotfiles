@@ -22,6 +22,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias 'vi.'="vi ."
 
+alias lg="lazygit"
+
 # Reloads the shell instance
 alias reload="exec zsh"
 

@@ -21,7 +21,7 @@ Run the following commands in the terminal to install common tools
 
 ```sh
 sudo apt update
-sudo apt install zsh wget git stow tmux fzf ripgrep fd-find ncal
+sudo apt install zsh wget git stow tmux fzf ripgrep fd-find ncal lazygit
 ```
 
 ### System Packages for MacOS Based Systems
@@ -36,7 +36,7 @@ Run the following commands in the terminal to install common tools
 
 ```sh
 brew update
-brew install wget git stow tmux fzf ripgrep fd
+brew install wget git stow tmux fzf ripgrep fd lazygit
 ```
 
 ## Terminal Environment Setup

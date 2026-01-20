@@ -40,6 +40,7 @@ You are more than welcome to use this repo as a template, but you will likely wa
 - ripgrep (recursively search a directory for lines matching a pattern)
 - fd-find (better alternative to `find`)
 - ncal (print a calendar to the command line)
+- lazygit (powerful tui for git)
 
 ## How This Repository Works
 
