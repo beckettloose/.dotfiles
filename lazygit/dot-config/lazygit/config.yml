@@ -1,7 +1,7 @@
 # lazygit config.yml
 gui:
   mouseEvents: false
-  shortTimeFormat: 03:04
+  shortTimeFormat: 15:04
   nerdFontsVersion: 3
   filterMode: fuzzy
 
