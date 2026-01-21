@@ -123,7 +123,8 @@ The `nvim` module contains my Neovim configuration files, symlinked to `~/.confi
 
 The `p10k` module contains the `~/.p10k.zsh` file used to configure [powerlevel10k](https://github.com/romkatv/powerlevel10k). The file header includes the options used to generate this file, however I have made the following changes afterwords:
 
-- Replace the VCS branch icon with a nerd font symbol
+- Replace the regular prompt icon and VCS branch icon with nerd font symbols
+- Replace the Vi mode prompt characters to N, V, and R to match editor mode
 - Change the VCS untracked symbol from `?` to `U`
 
 ### pulseaudio
@@ -165,12 +166,33 @@ The `wezterm` module contains my Wezterm configuration file. My wezterm configur
 
 ### zsh
 
-WIP
+The `zsh` module contains my base zsh configuration applicable to all systems. The initial entrypoint is the `~/.zshrc` file, which performs the following actions.
+
+1. Attempt to show the powerlevel10k instant prompt if available
+2. Configure and enable oh-my-zsh
+3. Configure `$PATH` deduplication
+4. Source `~/.zsh_system`
+5. Source `~/.zsh_dist` if it exists
+6. Source `~/.zsh_profile`
+7. Source `~/.p10k.zsh` (powerlevel10k config file)
+
+The `zsh_system` file is unique to each machine, and must be created manually by the user. It should start off by setting the `DOTFILES` and `DOTFILES_STOW_FOLDERS` environment variables. After that, any additional statements can be added to configure other environment variables like `PATH`, or defince functions used only on this specific computer. Think of this file as your new `zshrc`.
+
+The `zsh_dist` file is unique to the operating system type (macOS, Ubuntu, Linux Mint, etc.). This is described further in the sections below.
+
+The `zsh_profile` file contains user specifc configuration items that aren't part of the init process. In my case, this includes things like:
+
+- Setting `EDITOR` environment variables
+- Aliases for `nvim`, `lazygit`, zsh reloading, and `tmux` commands
+- Special functions that change the current directory of the shell
+- Command to quickly profile the shell startup time
+- zsh keybind and zle widget setup blocks
+- Alias to grep existing aliases
 
 ### zsh_macos
 
-WIP
+The `zsh_macos` module contains zsh initialization specific to macOS. In my case, this consists of adding the homebrew completions directory to `$FPATH` and running `compinit`.
 
 ### zsh_mint
 
-WIP
+The `zsh_mint` module contains zsh initialization specific to Linux Mint. In my case, this is just a alias to flush the DNS cache.
