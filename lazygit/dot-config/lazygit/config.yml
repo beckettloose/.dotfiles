@@ -4,7 +4,6 @@ gui:
   shortTimeFormat: 15:04
   nerdFontsVersion: 3
   filterMode: fuzzy
-
 git:
   commit:
     signOff: false # maybe want to change this eventually
@@ -14,9 +13,43 @@ git:
     manualCommit: true
   autoFetch: false
   autoRefresh: true
-
 update:
   method: prompt
   days: 14
+customCommands:
+  - key: '<c-p>'
+    description: "Push to a specific remote repository"
+    context: 'localBranches'
+    loadingText: 'Pushing...'
+    prompts:
+      - type: 'menuFromCommand'
+        title: 'Which remote repository to push to?'
+        command: bash -c "git remote --verbose | grep '/.* (push)'"
+        filter: '(?P<remote>.*)\s+(?P<url>.*) \(push\)'
+        valueFormat: '{{ .remote }}'
+        labelFormat: '{{ .remote | bold | cyan }} {{ .url }}'
+      - type: 'menu'
+        title: 'How to push?'
+        options:
+          - value: 'push'
+          - value: 'push --force-with-lease'
+          - value: 'push --force'
+    command: "git {{index .PromptResponses 1}} {{index .PromptResponses 0}}"
+  - key: '<c-p>'
+    description: "Pull from a specific remote repository"
+    context: 'files'
+    loadingText: 'Pulling ...'
+    command: git pull {{ .Form.Remote }} {{ .Form.RemoteBranch }}
+    prompts:
+      - type: 'input'
+        key: 'Remote'
+        title: "Remote:"
+        suggestions:
+          preset: 'remotes'
+      - type: 'input'
+        key: 'RemoteBranch'
+        title: "Remote branch:"
+        suggestions:
+          command: "git branch --remote --list '{{.Form.Remote}}/*' --format='%(refname:short)' | sed 's/{{.Form.Remote}}\\///'"
 
 notARepository: quit
