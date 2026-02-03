@@ -9,7 +9,7 @@ Upon logging into the system for the first time, the following directories shoul
 - `external`: Cloned repositories or source code for projects that you aren't actively developing. (neovim, asdf-vm, etc.)
 - `personal`: Personal projects that are in active development, but not intended for other users (may not even be made public)
 - `scratch`: A temporary place to store and work with files.
-- `work`: Work projects. Does not get used on my personal machines.
+- `work`: Work projects. Does not get used on my personal machines, but should still be created to keep my scripts happy.
 
 These directories are used to categorize projects such that they can be easily filtered when using the tmux-sessionizer script.
 
