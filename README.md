@@ -146,7 +146,7 @@ The `tmux` module contains my tmux configuration file. This used to be a much mo
 - Select windows by number with `M-1` through `M-0`
 - Create new window with `M-c`
 - Vim-style shortcuts for copy mode, with system clipboard support
-- Custom color scheme (trying to use only ANSI colors but I might be giving up on that)
+- Custom color scheme
 
 ### tpm_fido (deprecated)
 
