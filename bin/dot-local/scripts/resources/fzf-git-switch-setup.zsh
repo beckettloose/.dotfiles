@@ -10,36 +10,33 @@ function _fzf-git-switch {
     fi
 
     branches=()
+    typeset -aU branches # auto-deduplicate branch list
+    fzf_label="Fuzzy Git Switch (Local Branches Only)"
 
     if [[ $1 = "all" ]]; then
-        # get all local branches without upstreams
+        # override fzf label when searching all branches
         fzf_label="Fuzzy Git Switch (Include Remotes)"
-        printf "fzf-git-switch: finding local branches\r"
-        for i in $(git branch --format "%(refname:short) %(upstream)" | awk '{if (!$2) print $1;}'); do
-            branches+=("$i");
-        done
-
-        # get all branches from remotes (and deduplicate)
+        # get all branches from remotes (and deduplicate, assuming one primary remote)
         printf "fzf-git-switch: finding remote branches\r"
         for j in $(git ls-remote -q --heads | awk '{print $2;}' | sed 's/^refs\/heads\///'); do
             if [[ ! " ${branches[*]} " =~ [[:space:]]${j}[[:space:]] ]]; then
                 branches+=("${j}");
             fi
         done
-    else
-        # find local branches only (better performance since no network access)
-        fzf_label="Fuzzy Git Switch (Local Branches Only)"
-        printf "fzf-git-switch: finding local branches\r"
-        for i in $(git branch --format "%(refname:short)" | sed '/[[:space:]]/d'); do
-            branches+=("$i")
-        done
     fi
+
+    # find local branches only (preferred when possible to avoid network access)
+    printf "fzf-git-switch: finding local branches\r"
+    for i in $(git branch --format "%(refname:short)" | sed '/[[:space:]]/d'); do
+        branches+=("$i")
+    done
 
     choice=$(printf "%s\n" "${branches[@]}" | fzf --height 40% --layout reverse --border --border-label="${fzf_label}")
 
     if [[ -n "$choice" ]]; then
         if [[ $1 = "all" ]]; then
-            # Fetch any new branches from remotes.
+            # Fetch any new branches from remotes. This is required because the
+            # remote query did not actually fetch those branches
             printf "fzf-git-switch: fetching from remotes\n"
             git fetch
         fi
