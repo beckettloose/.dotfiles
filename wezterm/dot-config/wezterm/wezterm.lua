@@ -11,7 +11,7 @@ config.initial_cols = 80
 config.initial_rows = 20
 
 -- or, changing the font size and color scheme.
-config.font_size = 15
+config.font_size = 14
 config.color_scheme = 'Tokyo Night'
 
 -- disable window padding
