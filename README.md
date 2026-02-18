@@ -157,12 +157,12 @@ I made this to test tpm-fido on my desktop Linux PC but no longer need it. This 
 The `wezterm` module contains my Wezterm configuration file. My wezterm configuration is relatively simple and has the following parameters:
 
 - `80x20` initial window size
-- Default font size of 15
+- Default font size of 14
 - Tokyo Night color scheme
 - No window padding
 - Fixed window size increments
-- Disabled tab bar
-- Disabled splitting shortcuts
+- Disable tab bar
+- Disable all default key bindings
 
 ### zsh
 

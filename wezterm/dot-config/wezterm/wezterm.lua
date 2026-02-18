@@ -28,16 +28,8 @@ config.use_resize_increments = true
 -- tmux can handle this
 config.enable_tab_bar = false
 
--- Disable pane splitting by overriding default key bindings (thanks ChatGPT)
-config.keys = {
-  -- Horizontal splits
-  { key = '"', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
-  { key = '%', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
-
-  -- Some people bind splits on ALT or SUPER
-  { key = 'v', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
-  { key = 's', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
-}
+-- I don't want any keybinds by default
+config.disable_default_key_bindings = true
 
 -- Finally, return the configuration to wezterm:
 return config
