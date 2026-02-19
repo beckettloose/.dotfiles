@@ -34,6 +34,21 @@ alias dl="wget --content-disposition"
 alias tls="tmux list-sessions"
 alias ta="tmux attach"
 alias tcl="tmux clock-mode"
+tdev() { # set up windows for a simple development session
+    if [[ -z $TMUX ]]; then
+        echo "fatal: must be in tmux"
+    else
+        tmux_windows=$(tmux display-message -p '#{session_windows}')
+        if [[ "$tmux_windows" -eq "1" ]]; then
+            tmux new-window -n "nvim"
+            tmux new-window -n "build"
+            tmux new-window
+            tmux select-window -t 1
+        else
+            echo "fatal: session must have 1 window"
+        fi
+    fi
+}
 
 # Print return code of last executed command
 rtc() {
