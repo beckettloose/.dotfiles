@@ -31,5 +31,42 @@ config.enable_tab_bar = false
 -- I don't want any keybinds by default
 config.disable_default_key_bindings = true
 
+-- define some minimal keybinds
+config.keys = {
+    -- copy and paste
+    {
+        key = 'c',
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.CopyTo "Clipboard"
+    },
+    {
+        key = 'v',
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.PasteFrom "Clipboard"
+    },
+    {
+        key = 'c',
+        mods = "SUPER",
+        action = wezterm.action.CopyTo "Clipboard"
+    },
+    {
+        key = 'v',
+        mods = "SUPER",
+        action = wezterm.action.PasteFrom "Clipboard"
+    },
+    -- debug overlay
+    {
+        key = 'l',
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.ShowDebugOverlay
+    },
+    -- command palette
+    {
+        key = 'p',
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.ActivateCommandPalette
+    }
+}
+
 -- Finally, return the configuration to wezterm:
 return config
