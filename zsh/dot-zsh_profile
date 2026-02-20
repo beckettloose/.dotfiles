@@ -50,6 +50,23 @@ tdev() { # set up windows for a simple development session
     fi
 }
 
+tdot() { # set up windows for working on dotfiles
+    if [[ -z $TMUX ]]; then
+        echo "fatal: must be in tmux"
+    else
+        tmux_windows=$(tmux display-message -p '#{session_windows}')
+        tmux_session=$(tmux display-message -p '#{session_name}')
+        if [[ "$tmux_windows" -eq "1" && "$tmux_session" -eq "_dotfiles" ]]; then
+            tmux new-window -n "nvim"
+            tmux new-window -n "nvim cfg" -c "./nvim/dot-config/nvim/"
+            tmux new-window
+            tmux select-window -t 1
+        else
+            echo "fatal: must be in _dotfiles with 1 window"
+        fi
+    fi
+}
+
 # Print return code of last executed command
 rtc() {
     echo "$?"
