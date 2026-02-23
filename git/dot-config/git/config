@@ -22,7 +22,7 @@
     parallel = 0
 [checkout]
     workers = 0
-    thresholdForParellelism = 100
+    thresholdForParallelism = 100
 [alias]
     lg = lg1
     lg1 = lg1-specific --all
