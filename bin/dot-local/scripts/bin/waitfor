@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: waitfor 1234; something_else
 #
 # Waits for a PID to exit before continuing.

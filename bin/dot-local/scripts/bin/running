@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: running foo
 #
 # Basically like `ps aux | grep foo` but simpler to read. Only prints the PID

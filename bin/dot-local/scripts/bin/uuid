@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+#
 # Usage: uuid
 #
 # Prints a v4 UUID.

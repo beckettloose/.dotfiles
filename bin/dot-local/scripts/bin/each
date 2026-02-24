@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+#
 # Usage: ls | each 'du -h {}'
 #
 # Easier alternative to `xargs` or `find -exec`.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+#
 # Usage: u+ 2025
 #
 # Returns the unicode character at the specified codepoint.

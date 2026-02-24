@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: length foo (returns 3)
 #
 # Basically just an alias to `wc -c`

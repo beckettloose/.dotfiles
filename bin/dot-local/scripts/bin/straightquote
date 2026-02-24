@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: cat file.txt | straightquote > cleaned.txt
 #
 # Replaces fancy quotes with regular quotes.

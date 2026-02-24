@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: timer 10m
 #
 # Waits for the specified period, then plays a sound effect upon completion.

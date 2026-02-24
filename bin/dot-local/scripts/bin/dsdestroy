@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: dsdestroy
 #
 # Recursively delete all .DS_Store files in the current directory.

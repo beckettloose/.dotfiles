@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: cat > file.json | jsonformat
 #        jsonformat < file.json
 #

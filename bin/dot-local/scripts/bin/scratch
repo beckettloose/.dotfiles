@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: scratch
 #
 # Opens a temporary vim buffer. Basically `$EDITOR $(mktemp)`.

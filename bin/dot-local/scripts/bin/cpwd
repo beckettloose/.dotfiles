@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: cpwd
 #
 # Copies the current directory to the clipboard. Basically just `pwd | copy`.

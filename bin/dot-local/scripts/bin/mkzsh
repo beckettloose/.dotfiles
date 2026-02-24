@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: mkzsh foo.zsh
 #
 # Creates a file, marks it as executable, and adds a zsh shebang.

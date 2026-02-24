@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: bb my_command
 #
 # Really really run a program in the background.

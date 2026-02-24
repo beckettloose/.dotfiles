@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+#
 # Usage: murder foo
 #        murder 1234
 #

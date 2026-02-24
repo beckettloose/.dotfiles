@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: pastas > everything_i_copied.txt
 #        pastas | wget -i -
 #

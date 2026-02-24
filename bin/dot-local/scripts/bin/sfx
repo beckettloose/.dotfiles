@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: sfx foo.ogg
 #
 # Plays a sound effect from a specific directory

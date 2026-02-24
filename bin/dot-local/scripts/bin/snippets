@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: snippets foo
 #
 # `cat`s a snippet from a specific directory.

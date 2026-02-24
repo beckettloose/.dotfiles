@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: mksh foo.sh
 #
 # Creates a file, marks it as executable, and adds a bash shebang.

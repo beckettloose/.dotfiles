@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: ymd
 #
 # Prints the date in yyyy-mm-dd format.

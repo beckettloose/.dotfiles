@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: trynafail my_command
 #
 # Runs a command repeatedly until it fails.

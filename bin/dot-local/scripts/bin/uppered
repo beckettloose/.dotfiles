@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: echo foo | uppered (returns FOO)
 #
 # Converts a string on stdin to uppercase.

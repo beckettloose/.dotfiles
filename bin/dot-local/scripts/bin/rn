@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: rn
 #
 # Prints the current time and date using `date` and `cal`.

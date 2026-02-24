@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # idek what this does, I've never used it lol
 
 branch_name=$(basename $1)

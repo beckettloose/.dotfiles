@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Usage: pasta | some_command
 #        pasta > file.txt
 #
