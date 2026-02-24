@@ -1,7 +1,15 @@
 #!/bin/env bash
-
+#
 # Usage: scripts
 #
-# Fuzzy find through my utility scripts, optionally preview the first few lines.
+# Fuzzy find through my utility scripts, and preview the help text
 
-catbin $(find ~/.local/scripts/bin -mindepth 1 -maxdepth 1 | xargs -n1 basename | fzf) | head -n 25
+selected_file="$(find ~/.local/scripts/bin -mindepth 1 -maxdepth 1 -print0 | xargs -0 -n1 basename | fzf)"
+
+if [ -z "${selected_file}" ]; then
+    echo "fatal: no file selected"
+    exit 1
+fi
+
+echo "catbin ${selected_file}"
+catbin "${selected_file}" | head -n 25 | sed '/^#/!q'
