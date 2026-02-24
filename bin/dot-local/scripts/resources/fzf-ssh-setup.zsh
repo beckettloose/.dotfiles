@@ -8,6 +8,14 @@
 # searching a preconfigured list. It is recommended to bind this to a keyboard
 # shortcut for easy access. Requires init code in zshrc/zsh_profile to work.
 #
+# Init code example:
+#
+# fzf_ssh_setup="$HOME/.local/scripts/resources/fzf-ssh-setup.zsh"
+# if [[ -f "$fzf_ssh_setup" ]]; then
+#     source "$fzf_ssh_setup"
+#     bindkey ^s _fzf-ssh
+# fi
+#
 # Basic config file example:
 #
 # ---

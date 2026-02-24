@@ -1,4 +1,18 @@
 #!/usr/bin/env zsh
+#
+# Allow the user to fuzzy find a local or remote git branch, then check it out.
+# One fancy feature this allows, is to switch git branches without having to
+# retype a command you were working on. This operates as a zsh line editor (zle)
+# widget, and must be accompanied by the following setup code in your zshrc or
+# zsh_profile.
+#
+# fzf_git_switch_setup="$HOME/.local/scripts/resources/fzf-git-switch-setup.zsh"
+# if [[ -f "$fzf_git_switch_setup" ]]; then
+#     source "$fzf_git_switch_setup"
+#     bindkey "^[s" _fzf-git-switch
+#     bindkey "^[S" _fzf-git-switch-all
+# fi
+
 
 function _fzf-git-switch {
     printf "\33[2K\r" # Clear the prompt line so prints are displayed better

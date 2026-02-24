@@ -1,8 +1,14 @@
 #!/usr/bin/env zsh
 
 # Allow the user to fuzzy find a git tag, then check it out. Works as a zsh line
-# editor (zle) widget, and must be accompanied by the corresponding setup code
-# in your zshrc or zsh_profile.
+# editor (zle) widget, and must be accompanied by the following setup code in
+# your zshrc or zsh_profile.
+#
+# fzf_git_checkout_tag_setup="$HOME/.local/scripts/resources/fzf-git-checkout-tag-setup.zsh"
+# if [[ -f "$fzf_git_checkout_tag_setup" ]]; then
+#     source "$fzf_git_checkout_tag_setup"
+#     bindkey "^[t" _fzf-git-checkout-tag
+# fi
 
 function _fzf-git-checkout-tag {
     printf "\33[2K\r" # Clear the prompt line so prints are displayed better
