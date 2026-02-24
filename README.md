@@ -2,9 +2,7 @@
 
 ## Introduction
 
-This repository contains most of my configuration files for *nix operating systems (primarily Linux and macOS) along with their associated utility programs.
-
-You are more than welcome to use this repo as a template, but you will likely want to change most of the content to work how you want.
+This repository contains most of my configuration files for Linux and Mac OS utility programs (primarily command line software like zsh, tmux, and neovim). It is not by itself a generic system for deploying your dotfiles, however you are more than welcome to use it as an example to build your own dotfiles repository.
 
 ## Goals
 
@@ -21,21 +19,22 @@ You are more than welcome to use this repo as a template, but you will likely wa
 
 ## Inspiration
 
-- The stow system in this repository is very similar to [ThePrimeagen/.dotfiles](https://github.com/ThePrimeagen/.dotfiles)
+- The stow system in this repository is based on [ThePrimeagen/.dotfiles](https://github.com/ThePrimeagen/.dotfiles)
 - My neovim configuration was adapted from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but split into multiple files like ThePrimeagen's.
-- The tmux-sessionizer and tmux-cht.sh scripts are adapted from ThePrimeagen
+- The tmux-sessionizer and tmux-cht.sh scripts are stolen from ThePrimeagen (but modified significantly)
 - A bunch of utility scripts from [Evan Hahn](https://evanhahn.com/scripts-i-wrote-that-i-use-all-the-time/)
 
 ## Cool Features
 
 - GNU stow for automatically deploying config files
-- zsh + oh-my-zsh + powerlevel10k: lightning fast and simple, yet extremely powerful combination (when configured correctly)
+- zsh + oh-my-zsh + powerlevel10k: simple but extremely powerful combination (when configured correctly)
+- Custom zle widgets that speed up git and ssh usage
 - Simple tmux config with revised keybinds prioritizing speed
 - Powerful neovim configuration with lots of useful macros and plugins
 
 ## Requirements
 
-1. zsh (to use oh-my-zsh and my custom scripts without modification)
+1. zsh (to use oh-my-zsh and many of my custom scripts without modification)
 2. git (to clone this repo)
 3. GNU Stow (`>= 2.4.0` for the `--dotfiles` argument)
 
@@ -96,11 +95,11 @@ This is a basic overview of how to use the dotfiles repo. For a complete guide o
 
 ### bin
 
-The `bin` module contains useful shell scripts and their associated data. Data is located in `~/.config/`, and the scripts themselves are located in `~/.local/scripts/`. This contains the `bin/` directory which is for user-executable programs and the `resources/` directory for non-user executable programs (zle widget setup scripts, etc.).
+The `bin` module contains useful shell scripts and their associated data. The `dot-local/scripts/bin/` directory which is for user-executable programs and `dot-local/scripts/resources/` directory for non-user executable programs or resource files (zle widget setup scripts, sound effects, etc.).
 
 Scripts of Note:
 - `tmux-sessionizer`: quickly create and attach to tmux sessions named after project directories
-- `copy` and `pasta`: platform agnostic wrappers for pbcopy and xclip that work on Mac and Linux
+- `copy` and `pasta`: platform agnostic wrappers for pbcopy/pbpaste and xclip that work on Mac and Linux
 - `prettypath`: prints each path in `$PATH` on a separate line
 - `fzf-ssh-setup`: quickly search ssh hosts using fzf
 - `fzf-git-switch-setup`: quickly switch git branches (local or remote) using fzf
@@ -109,11 +108,17 @@ Scripts of Note:
 
 ### git
 
-The `git` module contains my `.gitconfig` file. The `[includeIf "gitdir:~/work/"]` section activates a secondary `.gitconfig` when working inside of the `~/work/` directory, overriding the `user.email` value. This file is not committed to the repository for security purposes. Additionally, there are the `git lg` aliases which print a prettified commit graph in 3 different verbosity levels.
+The `git` module contains my global git configuration and ignore file. This contains some basic settings like my git name and email, along with some minor adjustments I've made to help improve performance and usability. I put these files in `~/.config/git/` to avoid cluttering up my home directory.
+
+There is a global gitignore file that always excludes certain files (like `.DS_Store`) on any repository.
+
+The `[includeIf "gitdir:~/work/"]` section activates a secondary `.gitconfig` when working inside of the `~/work/` directory, overriding the `user.email` value. For security purposes, this file is not committed to the repository.
+
+Additionally, there are the `git lg` aliases which print a prettified commit graph in 3 different verbosity levels.
 
 ### lazygit
 
-The lazygit module simply contains the `~/.config/lazygit/config.yml` file. Nothing special in here other than some personal preferences.
+The lazygit module simply contains the `~/.config/lazygit/config.yml` file. Nothing special in here other than some personal preferences and custom commands that are already documented elsewhere.
 
 ### nvim
 
