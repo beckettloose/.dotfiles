@@ -172,22 +172,24 @@ The `zsh` module contains my base zsh configuration applicable to all systems. T
 2. Configure and enable oh-my-zsh
 3. Configure `$PATH` deduplication
 4. Source `~/.zsh_system`
-5. Source `~/.zsh_dist` if it exists
+5. Source `~/.zsh_dist` (if it exists)
 6. Source `~/.zsh_profile`
-7. Source `~/.p10k.zsh` (powerlevel10k config file)
+7. Source `~/.p10k.zsh` (if it exists)
 
-The `zsh_system` file is unique to each machine, and must be created manually by the user. It should start off by setting the `DOTFILES` and `DOTFILES_STOW_FOLDERS` environment variables. After that, any additional statements can be added to configure other environment variables like `PATH`, or defince functions used only on this specific computer. Think of this file as your new `zshrc`.
+The `zsh_system` file is unique to each machine, and must be created manually by the user. It should start off by setting the `DOTFILES` and `DOTFILES_STOW_FOLDERS` environment variables. After that, any additional statements can be added to configure other environment variables like `PATH`, or define functions used only on this specific computer. Think of this file as your new `zshrc`.
 
-The `zsh_dist` file is unique to the operating system type (macOS, Ubuntu, Linux Mint, etc.). This is described further in the sections below.
+The `zsh_dist` file is unique to the operating system type (macOS, Linux Mint, etc.). This is described further in the sections below. The file is only loaded if it exists, as not all systems will have it.
 
-The `zsh_profile` file contains user specifc configuration items that aren't part of the init process. In my case, this includes things like:
+The `zsh_profile` file contains user specific configuration items that aren't part of the init process. In my case, this includes things like:
 
-- Setting `EDITOR` environment variables
-- Aliases for `nvim`, `lazygit`, zsh reloading, and `tmux` commands
-- Special functions that change the current directory of the shell
+- Set environment variables (like `EDITOR`)
+- Create aliases for `nvim`, `lazygit`, zsh reloading, and `tmux` commands
+- Special functions that rely on shell context like the working directory or last exit code
 - Command to quickly profile the shell startup time
 - zsh keybind and zle widget setup blocks
 - Alias to grep existing aliases
+
+The `p10k.zsh` file contains configuration parameters for powerlevel10k. Like `zsh_dist`, it is only loaded if it exists.
 
 ### zsh_macos
 
