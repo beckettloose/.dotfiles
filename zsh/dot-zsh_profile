@@ -34,7 +34,9 @@ alias dl="wget --content-disposition"
 alias tls="tmux list-sessions"
 alias ta="tmux attach"
 alias tcl="tmux clock-mode"
-tdev() { # set up windows for a simple development session
+
+# set up tmux windows for a basic development session
+tdev() {
     if [[ -z $TMUX ]]; then
         echo "fatal: must be in tmux"
     else
@@ -50,7 +52,8 @@ tdev() { # set up windows for a simple development session
     fi
 }
 
-tdot() { # set up windows for working on dotfiles
+# set up tmux windows for working on dotfiles
+tdot() {
     if [[ -z $TMUX ]]; then
         echo "fatal: must be in tmux"
     else

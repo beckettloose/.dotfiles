@@ -144,13 +144,13 @@ The `tmux` module contains my tmux configuration file. This used to be a much mo
 - Shortcuts for `tmux-sessionizer` and `tmux-cht.sh` scripts
 - Start numbering windows and panes at 1
 - Disable automatic window renaming
-- Add non-prefixed shortcut for renaming current window
+- Rename current window with `M-,`
 - Automatically renumber windows when one is closed
-- Use hjkl keys to navigate and manipulate panes and windows
+- Use vim-style `hjkl` keys to navigate and manipulate panes and windows
 - Select windows by number with `M-1` through `M-0`
 - Create new window with `M-c`
 - Vim-style shortcuts for copy mode, with system clipboard support
-- Custom color scheme
+- Custom color scheme (based on Tokyo Night)
 
 ### wezterm
 
