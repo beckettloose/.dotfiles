@@ -78,7 +78,6 @@ This is a basic overview of how to use the dotfiles repo. For a complete guide o
 - p10k: Custom powerlevel10k configuration
 - pulseaudio: Custom pulseaudio config for my Behringer XR-18
 - tmux: My tmux configuration (as a submodule)
-- tpm_fido: TPM-FIDO systemd user unit
 - wezterm: My basic wezterm configuration
 - zsh: My base zsh configuration
 - zsh_macos: Zsh config for mac OS
@@ -152,10 +151,6 @@ The `tmux` module contains my tmux configuration file. This used to be a much mo
 - Create new window with `M-c`
 - Vim-style shortcuts for copy mode, with system clipboard support
 - Custom color scheme
-
-### tpm_fido (deprecated)
-
-I made this to test tpm-fido on my desktop Linux PC but no longer need it. This will be removed in the future.
 
 ### wezterm
 
