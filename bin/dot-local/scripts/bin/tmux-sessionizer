@@ -47,17 +47,31 @@ selected="${HOME}/${selected}"
 # Replace dots with underscores for tmux session name
 selected_name=$(basename "$selected" | tr . _)
 
+# Check if we have an init script for this session
+init_script="tmux-$selected_name"
+if ! hash "$init_script" 2>/dev/null; then
+    init_script=""
+fi
+
 tmux_running=$(pgrep tmux)
 
 if [[ -z $tmux_running ]]; then
     # Create a new session and attach to it immediately
-    tmux new-session -s "$selected_name" -c "$selected"
+    if [[ -z "$init_script" ]]; then
+        tmux new-session -s "$selected_name" -c "$selected"
+    else
+        tmux new-session -s "$selected_name" -c "$selected" "$init_script"
+    fi
     exit 0
 fi
 
 if ! tmux has-session -t="$selected_name" 2> /dev/null; then
     # Create the new session in the background
-    tmux new-session -ds "$selected_name" -c "$selected"
+    if [[ -z "$init_script" ]]; then
+        tmux new-session -ds "$selected_name" -c "$selected"
+    else
+        tmux new-session -ds "$selected_name" -c "$selected" "$init_script"
+    fi
 fi
 
 # If we are not currently in tmux
