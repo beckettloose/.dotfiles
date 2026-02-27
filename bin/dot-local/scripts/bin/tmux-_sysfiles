@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# Init script for tmux _sysfiles session
+
+tmux-windowizer zsh
+
+tmux-windowizer nvim
+tmux-windowizer nvim nvim
+
+tmux-windowizer testing
