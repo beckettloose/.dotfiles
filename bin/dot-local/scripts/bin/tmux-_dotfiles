@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# Init script for tmux _dotfiles session
+
+tmux-windowizer zsh
+
+tmux-windowizer nvim
+tmux-windowizer nvim nvim
+
+tmux-windowizer "nvim cfg"
+tmux-windowizer "nvim cfg" "cd nvim/dot-config/nvim"
+tmux-windowizer "nvim cfg" nvim
+
+tmux-windowizer testing
+
