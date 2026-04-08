@@ -29,10 +29,12 @@
 #   defaults:
 #     instant: false
 #     user: ""
+#     port: 22
 #     edituser: false
 # hosts:
 #   - key: "Example Host"
 #     host: "192.168.0.1"
+#     port: "2222"
 #     user: "defaultuser"
 #     instant: true
 #     edituser: true
@@ -132,14 +134,30 @@ function _fzf-ssh {
     # get the host parameter
     host=$(yq ".hosts.[] | select(.key == \"${choice}\") | .host" $FUZZY_SSH_CONFIG_FILE | sed 's/"//g')
 
-    # calculate the complete command line string
-    if [ -z "${user}" ]; then
-        # username is empty, don't print it or the @ symbol
-        cmdline="ssh $host"
+    # check if the host specifies the port parameter
+    host_has_port_key=$(yq ".hosts.[] | select(.key == \"${choice}\") | has(\"port\")" $FUZZY_SSH_CONFIG_FILE)
+    if [[ "$host_has_port_key" == true ]]; then
+        # host has the port key, use its value
+        port=$(yq ".hosts.[] | select(.key == \"${choice}\") | .port" $FUZZY_SSH_CONFIG_FILE)
     else
-        # print full username and host
-        cmdline="ssh $user@$host"
+        # fallback to default port value
+        port=$(yq '.config.defaults.port' $FUZZY_SSH_CONFIG_FILE)
     fi
+
+    # calculate the complete command line string
+    cmdline="ssh "
+
+    # if we have a port, we should print that first
+    if [ "${port}" ]; then
+        cmdline+="-p ${port} "
+    fi
+
+    # if we have a username print it and the @ symbol
+    if [ "${user}" ]; then
+        cmdline+="$user@"
+    fi
+
+    cmdline+="$host"
 
     if [[ $instant == "true" ]]; then
         # automatically execute the command
