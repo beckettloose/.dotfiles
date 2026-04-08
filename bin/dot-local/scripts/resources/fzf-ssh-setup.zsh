@@ -93,7 +93,7 @@ function _fzf-ssh {
     fi
 
     # get formatted hosts list and send to fzf, return just the chosen key
-    choice=$(yq '.hosts.[] | .key + ": " + .user + "@" + .host' $FUZZY_SSH_CONFIG_FILE | sed 's/"//g' | FZF_DEFAULT_OPTS="$fzf_options" fzf | cut -d":" -f1)
+    choice=$(yq '.hosts.[] | .key + ": " + .user + "@" + .host + ":" + .port' $FUZZY_SSH_CONFIG_FILE | sed 's/"//g' | FZF_DEFAULT_OPTS="$fzf_options" fzf | cut -d":" -f1)
 
     # ensure choice isn't empty
     if ! [[ -n "$choice" ]]; then
