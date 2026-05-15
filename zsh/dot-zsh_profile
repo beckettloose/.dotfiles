@@ -142,6 +142,13 @@ if [[ -f "$fzf_git_checkout_tag_setup" ]]; then
     bindkey "^[t" _fzf-git-checkout-tag
 fi
 
+# tfuz (fzf find open tmux sessions)
+tmux_tfuz_setup="$HOME/.local/scripts/resources/tmux-tfuz-setup.zsh"
+if [[ -f "$tmux_tfuz_setup" ]]; then
+    source "$tmux_tfuz_setup"
+    bindkey "^[f" _tmux-tfuz
+fi
+
 # unbind fwd-i-search
 # bindkey -r ^s
 
