@@ -76,7 +76,8 @@ This is a basic overview of how to use the dotfiles repo. For a complete guide o
 - git: My gitconfig
 - nvim: My Neovim configuration
 - p10k: Custom powerlevel10k configuration
-- pulseaudio: Custom pulseaudio config for my Behringer XR-18
+- pulseaudio: (deprecated) Custom pulseaudio config for my Behringer XR-18 for systems running PulseAudio
+- xr18: Custom pipewire and wireplumber configuration for my Behringer XR-18
 - tmux: My tmux configuration (as a submodule)
 - wezterm: My basic wezterm configuration
 - zsh: My base zsh configuration
