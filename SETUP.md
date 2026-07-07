@@ -1,5 +1,7 @@
 # SETUP.md
 
+Note: this may be outdated, I need to review it still
+
 This document provides basic instructions for setting up a Linux or macOS user account to my preferred specifications. Directory structure, utility programs, and dotfiles setup will be covered.
 
 ## Creating the Home Directory Structure

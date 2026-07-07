@@ -72,17 +72,22 @@ This is a basic overview of how to use the dotfiles repo. For a complete guide o
 
 ### Modules
 
-- bin: Useful scripts and associated data
-- git: My gitconfig
-- nvim: My Neovim configuration
-- p10k: Custom powerlevel10k configuration
-- pulseaudio: (deprecated) Custom pulseaudio config for my Behringer XR-18 for systems running PulseAudio
-- xr18: Custom pipewire and wireplumber configuration for my Behringer XR-18
-- tmux: My tmux configuration (as a submodule)
-- wezterm: My basic wezterm configuration
-- zsh: My base zsh configuration
-- zsh_macos: Zsh config for mac OS
-- zsh_mint: Zsh config for Linux Mint
+Below is a high-level overview of each module in this repository.
+
+- `aerospace`: Configuration for the Aerospace Tiling Window Manager (Mac OS)
+- `alacritty`: Configuration for the Alacritty terminal emulator
+- `bin`: Useful scripts and associated data
+- `git`: My gitconfig
+- `lazygit`: Configuration for LazyGit
+- `nvim`: My Neovim configuration
+- `p10k`: Custom powerlevel10k configuration
+- `pulseaudio`: (deprecated) Custom pulseaudio config for my Behringer XR18 for systems running PulseAudio
+- `tmux`: My tmux configuration (as a submodule)
+- `wezterm`: My basic wezterm configuration
+- `xr18`: Custom pipewire and wireplumber configuration for my Behringer XR18
+- `zsh`: My base zsh configuration
+- `zsh_macos`: Zsh config for mac OS
+- `zsh_mint`: Zsh config for Linux Mint
 
 ### Files
 
@@ -93,11 +98,29 @@ This is a basic overview of how to use the dotfiles repo. For a complete guide o
 
 ## Module Design and Features
 
-### bin
+### Aerospace
+
+The `aerospace` module contains the configuration file for the Aerospace tiling window manager for MacOS.
+
+I'm not personally a huge fan of tiling window managers, but Apple's spaces implementation slows down my workflow significantly with agonizingly long animations, confusing behavior, and awful keybinds that other programs override. It infuriated me so much that a custom WM was the best solution. This module will probably be deprecated and removed once I get my Framework 13 Pro (on which I plan to install Fedora KDE).
+
+I don't really remember what I changed in this config other than switching the base prefix from Cmd to Cmd+Alt.
+
+### Alacritty
+
+The `alacritty` module contains the configuration file for the Alacritty terminal emulator, along with a Tokyo Night color scheme.
+
+I think I had a weird crashing issue with Wezterm related to Nvidia drivers or Wayland so I have been using Alacritty in the meantime until that is patched (which it might be already). The very basic configuration sets the following options:
+
+- Tokyo Night color scheme
+- 110x28 default window size
+- Font JetBrainsMono Nerd Font, 13.5pt
+
+### Bin
 
 The `bin` module contains useful shell scripts and their associated data. The `dot-local/scripts/bin/` directory which is for user-executable programs and `dot-local/scripts/resources/` directory for non-user executable programs or resource files (zle widget setup scripts, sound effects, etc.).
 
-Scripts of Note:
+Scripts of note:
 - `tmux-sessionizer`: quickly create and attach to tmux sessions named after project directories
 - `copy` and `pasta`: platform agnostic wrappers for pbcopy/pbpaste and xclip that work on Mac and Linux
 - `prettypath`: prints each path in `$PATH` on a separate line
@@ -106,25 +129,40 @@ Scripts of Note:
 - `fzf-git-checkout-tag-setup`: quickly checkout a git tag using fzf
 - `tmux-sessionizer-setup`: use `tmux-sessionizer` from a zle widget
 
-### git
+### Git
 
 The `git` module contains my global git configuration and ignore file. This contains some basic settings like my git name and email, along with some minor adjustments I've made to help improve performance and usability. I put these files in `~/.config/git/` to avoid cluttering up my home directory.
 
-There is a global gitignore file that always excludes certain files (like `.DS_Store`) on any repository.
+The global gitignore system uses the `core.excludesfile` option to point at `~/.config/git/ignore`. I currently use this feature to globally ignore all `.DS_Store` files.
 
-The `[includeIf "gitdir:~/work/"]` section activates a secondary `.gitconfig` when working inside of the `~/work/` directory, overriding the `user.email` value. For security purposes, this file is not committed to the repository.
+I have also chosen to disable some of the advice options as they clutter up the terminal.
 
-Additionally, there are the `git lg` aliases which print a prettified commit graph in 3 different verbosity levels.
+Additionally, there are aliases for `git log` which print a prettified commit graph at 3 different verbosity levels. I still use this often even though I have lazygit, because it shows the entire history for all branches, tags, and stashes, not just the checked-out commit.
 
-### lazygit
+The `[includeIf "gitdir:~/work/"]` section activates a secondary `.gitconfig` when the repository is inside of `~/work/`, and overrides `user.email`.
 
-The lazygit module simply contains the `~/.config/lazygit/config.yml` file. Nothing special in here other than some personal preferences and custom commands that are already documented elsewhere.
+### LazyGit
 
-### nvim
+The `lazygit` module simply contains the `~/.config/lazygit/config.yml` file. This configures the following parameters:
+
+- Quit if not in a repository
+- Disable mouse mode
+- Use 24h timestamps
+- Nerd font enabled
+- Fuzzy filtering
+- Auto wrap commit message body at 72 chars
+- Custom Commands
+    - Push to specific remote
+    - Pull from specific remote
+    - Push selected commit
+    - Add empty commit
+    - Conventional commit wizard
+
+### Nvim
 
 The `nvim` module contains my Neovim configuration files, symlinked to `~/.config/nvim`. Complete details can be found [here](https://github.com/beckettloose/.nvim).
 
-### p10k
+### P10k
 
 The `p10k` module contains the `~/.p10k.zsh` file used to configure [powerlevel10k](https://github.com/romkatv/powerlevel10k). The file header includes the options used to generate this file, however I have made the following changes afterwords:
 
@@ -132,13 +170,13 @@ The `p10k` module contains the `~/.p10k.zsh` file used to configure [powerlevel1
 - Replace the Vi mode prompt characters to N, V, and R to match editor mode
 - Change the VCS untracked symbol from `?` to `U`
 
-### pulseaudio
+### PulseAudio
 
-The `pulseaudio` module contains a special configuration for PulseAudio specific to my Linux desktop PC, and is intended to interface with my Behringer XR-18 mixer. The mixer presents itself as a single ~18 channel bidirectional device, so this handles the creation of virtual sinks and sources that map to mono channels or stereo pairs on the main device. I can then use `pavucontrol` to route individual apps to different mixer channels.
+The `pulseaudio` module contains a special configuration for PulseAudio specific to my Linux desktop PC, and is intended to interface with my Behringer XR18 mixer. The mixer presents itself as a single ~18 channel bidirectional device, so this handles the creation of virtual sinks and sources that map to mono channels or stereo pairs on the main device. I can then use `pavucontrol` to route individual apps to different mixer channels. Note that this module is deprecated as I have switched to Fedora KDE which uses PipeWire and Wireplumber for audio.
 
-### tmux
+### Tmux
 
-The `tmux` module contains my tmux configuration file. This used to be a much more complicated system forked from [gpakosz/.tmux](https://github.com/gpakosz/.tmux), but I wanted something more simple and easy to modify. Features of note are listed below:
+The `tmux` module contains my tmux configuration file. This used to be a much more complicated system forked from [gpakosz/.tmux](https://github.com/gpakosz/.tmux), but I found that it really wasn't worth the complexity, and a config that was closer to default would be a better choice in the long run. The main features of this config are listed below:
 
 - Change prefix to `C-a` to allow nested `screen` sessions
 - Add shortcut for reloading config file
@@ -146,14 +184,14 @@ The `tmux` module contains my tmux configuration file. This used to be a much mo
 - Start numbering windows and panes at 1
 - Disable automatic window renaming
 - Rename current window with `M-,`
-- Automatically renumber windows when one is closed
+- Automatically renumber windows
 - Use vim-style `hjkl` keys to navigate and manipulate panes and windows
 - Select windows by number with `M-1` through `M-0`
 - Create new window with `M-c`
 - Vim-style shortcuts for copy mode, with system clipboard support
 - Custom color scheme (based on Tokyo Night)
 
-### wezterm
+### Wezterm
 
 The `wezterm` module contains my Wezterm configuration file. My wezterm configuration is relatively simple and has the following parameters:
 
@@ -164,10 +202,32 @@ The `wezterm` module contains my Wezterm configuration file. My wezterm configur
 - Fixed window size increments
 - Disable tab bar
 - Disable all default key bindings
+- Re-enable basic keybinds
+    - Copy/paste
+    - Debug overlay
+    - Command palette
 
-### zsh
+### XR18
 
-The `zsh` module contains my base zsh configuration applicable to all systems. The initial entrypoint is the `~/.zshrc` file, which performs the following actions.
+The `xr18` module contains the configuration files required to support the use of my Behringer XR18 mixer as a multi-channel audio interface. While Linux ships with the necessary drivers to use the XR18, it exposes it as single 18-in/18-out audio interface which is not optimal for my use case.
+
+These files configure Pipewire to spin up a series of virtual loopback nodes that remap individual channels (or stereo pairs) from the XR18 into separate mono and stereo devices. This allows me to route the audio from different applications to separate mixer channels and then mix them together on the XR18 itself. I also return the output of some mix buses so that they can be used as a source for chat and streaming applications. The exact setup is described below:
+
+- Output Sinks (PC to XR18)
+    - Main Audio Output (Stereo, maps to XR18 inputs 1/2)
+    - Chat Audio Output (Mono, maps to XR18 input 6)
+    - Media Audio Output (Stereo, maps to XR18 inputs 7/8)
+- Input Sources (XR18 to PC)
+    - Stream Audio Input (Stereo, maps to XR18 outputs 3/4)
+    - Microphone Audio Input (Mono, maps to XR18 output 6)
+
+There is also a simple wireplumber config that sets the default source and sink to the appropriate loopback interfaces.
+
+This module is one of the rare "success cases" for Linux audio. While many people seem to struggle with intermittent or hard to diagnose problems, this setup has worked brilliantly for me. Additionally, it is done without any paid software, unlike the Windows version of this setup (which used VB Audio's VoiceMeeter Potato, a very high quality but paid piece of software)
+
+### Zsh
+
+The `zsh` module contains my base zsh configuration applicable to all systems. The initial entry point is the `~/.zshrc` file, which performs the following actions.
 
 1. Attempt to show the powerlevel10k instant prompt if available
 2. Configure and enable oh-my-zsh
@@ -192,10 +252,10 @@ The `zsh_profile` file contains user specific configuration items that aren't pa
 
 The `p10k.zsh` file contains configuration parameters for powerlevel10k. Like `zsh_dist`, it is only loaded if it exists.
 
-### zsh_macos
+### Zsh MacOS
 
 The `zsh_macos` module contains zsh initialization specific to macOS. In my case, this consists of adding the homebrew completions directory to `$FPATH` and running `compinit`.
 
-### zsh_mint
+### Zsh Mint
 
 The `zsh_mint` module contains zsh initialization specific to Linux Mint. In my case, this is just a alias to flush the DNS cache.
