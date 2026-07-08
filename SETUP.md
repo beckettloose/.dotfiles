@@ -1,6 +1,4 @@
-# SETUP.md
-
-Note: this may be outdated, I need to review it still
+# beckettloose/.dotfiles Setup
 
 This document provides basic instructions for setting up a Linux or macOS user account to my preferred specifications. Directory structure, utility programs, and dotfiles setup will be covered.
 
@@ -11,9 +9,9 @@ Upon logging into the system for the first time, the following directories shoul
 - `external`: Cloned repositories or source code for projects that you aren't actively developing. (neovim, asdf-vm, etc.)
 - `personal`: Personal projects that are in active development, but not intended for other users (may not even be made public)
 - `scratch`: A temporary place to store and work with files.
-- `work`: Work projects. Does not get used on my personal machines, but should still be created to keep my scripts happy.
+- `work`: Work projects. This is not required on personal machines.
 
-These directories are used to categorize projects such that they can be easily filtered when using the tmux-sessionizer script.
+These directories are used to categorize projects such that they can be easily filtered when using the tmux-sessionizer script. The script will search `~/`, `~/external/`, `~/personal/`, and `~/work/` at a depth of 1 level, adding each directory it finds to the list of potential Tmux sessions.
 
 ## Installing utility packages
 
@@ -41,21 +39,27 @@ brew update
 brew install wget git stow tmux fzf ripgrep fd lazygit
 ```
 
-## Terminal Environment Setup
-
-### Switching to ZSH (Not required on macOS)
-
-To switch the shell to zsh, run the following command.
+### System Packages for Fedora-based systems (with `dnf`)
 
 ```sh
-chsh -s /bin/zsh
+sudo dnf install git stow tmux fzf ripgrep fd-find
 ```
 
-Close and reopen the terminal (or relog on console only machines) to start zsh. If prompted, choose to not create a configuration file yet. The dotfiles repo will override it anyways.
+## Terminal Environment Setup
+
+### Switching to Zsh
+
+To switch the shell to Zsh, run the following command. (Note: this should not be required on Mac OS because Zsh is already the default)
+
+```sh
+chsh -s /bin/zsh $USER
+```
+
+Close and reopen the terminal (or relog on console only machines) to start Zsh. If prompted, choose to not create a configuration file yet. The dotfiles repo will override it anyways.
 
 ### Installing OhMyZsh
 
-Run the following command to install OhMyZsh (must be run from zsh)
+Run the following command to install OhMyZsh (must be run in a Zsh session)
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -63,7 +67,14 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ### Installing Dotfiles
 
+Run the following command to ensure these top level directories exist. If you run the install script before this, Stow may attempt to take over the entire directory and cause problems.
+
+```sh
+mkdir -p "$HOME/.config" "$HOME/.local"
+```
+
 Run the following command to clone the dotfiles repository
+
 ```bash
 git clone --recurse-submodules https://github.com/beckettloose/.dotfiles.git ~/.dotfiles
 ```
@@ -74,6 +85,7 @@ Run the following commands to create the `.zsh_system` file, populate it with th
 touch "$HOME/.zsh_system"
 echo "export DOTFILES=\"$HOME/.dotfiles\"" >> "$HOME/.zsh_system"
 echo "export DOTFILES_STOW_FOLDERS=\"bin,git,nvim,tmux,zsh\"" >> "$HOME/.zsh_system"
+source "$HOME/.zsh_system"
 ```
 
 Now, open the dotfiles directory and run the install script.
