@@ -80,7 +80,7 @@ Below is a high-level overview of each module in this repository.
 - `git`: My gitconfig
 - `lazygit`: Configuration for LazyGit
 - `nvim`: My Neovim configuration
-- `p10k`: Custom powerlevel10k configuration
+- `p10k`: Custom Powerlevel10k configuration
 - `pulseaudio`: (deprecated) Custom pulseaudio config for my Behringer XR18 for systems running PulseAudio
 - `tmux`: My tmux configuration (as a submodule)
 - `wezterm`: My basic wezterm configuration
@@ -158,11 +158,11 @@ The `lazygit` module simply contains the `~/.config/lazygit/config.yml` file. Th
     - Add empty commit
     - Conventional commit wizard
 
-### Nvim
+### Neovim
 
 The `nvim` module contains my Neovim configuration files, symlinked to `~/.config/nvim`. Complete details can be found [here](https://github.com/beckettloose/.nvim).
 
-### P10k
+### Powerlevel10k
 
 The `p10k` module contains the `~/.p10k.zsh` file used to configure [powerlevel10k](https://github.com/romkatv/powerlevel10k). The file header includes the options used to generate this file, however I have made the following changes afterwords:
 
@@ -207,7 +207,7 @@ The `wezterm` module contains my Wezterm configuration file. My wezterm configur
     - Debug overlay
     - Command palette
 
-### XR18
+### Behringer XR18
 
 The `xr18` module contains the configuration files required to support the use of my Behringer XR18 mixer as a multi-channel audio interface. While Linux ships with the necessary drivers to use the XR18, it exposes it as single 18-in/18-out audio interface which is not optimal for my use case.
 
