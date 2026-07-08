@@ -1,40 +1,40 @@
-# .dotfiles
+# beckettloose/.dotfiles
 
 ## Introduction
 
-This repository contains most of my configuration files for Linux and Mac OS utility programs (primarily command line software like zsh, tmux, and neovim). It is not by itself a generic system for deploying your dotfiles, however you are more than welcome to use it as an example to build your own dotfiles repository.
+This repository contains most of my configuration files for Linux and Mac OS utility programs (primarily command line software like Zsh, Tmux, and Neovim). It is not by itself a generic system for deploying your dotfiles, however you are more than welcome to use it as an example to build your own dotfiles repository.
 
 ## Goals
 
 - Provide a consistent experience across a variety of platforms and architectures
-    - Rely on widely supported programs for core functionality (e.g. zsh, stow, tmux, neovim)
-    - Use tmux for windows and sessions rather than the terminal emulator itself (allows the use of any terminal emulator, or even working over ssh)
-- Prioritize simplicity of user experience
+    - Rely on widely supported programs for core functionality (e.g. Zsh, GNU Stow, Tmux, Neovim)
+    - Use Tmux for windows and sessions rather than the terminal emulator itself. This allows for the use of any terminal emulator, or even working over ssh without changing the user experience and workflow.
+- Prioritize simplicity of user experience without restricting capabilities
     - Don't clutter up the prompt line with unimportant information or fancy themes
     - Add functionality without forcing complex workflows
-    - Create more efficient keybinds without overriding defaults
+    - Create more efficient keybinds that are faithful to the defaults
 - Optimize performance and reduce waiting times
-    - Use powerlevel10k to keep new shell startup time under 500ms and prompt return time around 100ms
-    - Use snacks.nvim quickfile and bigfile to optimize loading times, especially for big files (2GiB test file opens in ~10sec)
+    - Use Powerlevel10k with instant prompt mode to keep new shell startup time under 500ms and prompt return time around 100ms
+    - Use snacks.nvim quickfile and bigfile to optimize loading times, especially for big files (2GiB test file opens in ~10sec, which is pretty good for Neovim)
 
 ## Inspiration
 
 - The stow system in this repository is based on [ThePrimeagen/.dotfiles](https://github.com/ThePrimeagen/.dotfiles)
-- My neovim configuration was adapted from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but split into multiple files like ThePrimeagen's.
+- My Neovim configuration was adapted from [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but split into multiple files like ThePrimeagen's.
 - The tmux-sessionizer and tmux-cht.sh scripts are stolen from ThePrimeagen (but modified significantly)
 - A bunch of utility scripts from [Evan Hahn](https://evanhahn.com/scripts-i-wrote-that-i-use-all-the-time/)
 
 ## Cool Features
 
-- GNU stow for automatically deploying config files
-- zsh + oh-my-zsh + powerlevel10k: simple but extremely powerful combination (when configured correctly)
-- Custom zle widgets that speed up git and ssh usage
-- Simple tmux config with revised keybinds prioritizing speed
-- Powerful neovim configuration with lots of useful macros and plugins
+- Uses GNU Stow to automatically deploy config files to your home directory using symlinks. This means most changes made in the repo will apply automatically without re-running the install script (except for adding/removing files and modules).
+- Zsh + OhMyZsh + Powerlevel10k: a powerful and extensible environment that is simple and performant when configured appropriately.
+- Custom Zsh Line Editor (zle) widgets allow for deep integration of shell utilities
+- Simple Tmux config with revised keybinds prioritizing speed
+- Powerful Neovim configuration with lots of useful macros and plugins
 
 ## Requirements
 
-1. zsh (to use oh-my-zsh and many of my custom scripts without modification)
+1. Zsh (to use OhMyZsh and many of my custom scripts)
 2. git (to clone this repo)
 3. GNU Stow (`>= 2.4.0` for the `--dotfiles` argument)
 
@@ -42,7 +42,7 @@ This repository contains most of my configuration files for Linux and Mac OS uti
 
 - tmux (multiple terminals in one)
 - neovim (my preferred text editor)
-- fzf ("fuzzy finder" for efficiently searching large lists, used in a few of my scripts)
+- fzf ("fuzzy finder" for efficiently searching large lists, used in a few of my scripts and in Neovim)
 - ripgrep (recursively search a directory for lines matching a pattern)
 - fd-find (better alternative to `find`)
 - ncal (print a calendar to the command line)
@@ -50,11 +50,11 @@ This repository contains most of my configuration files for Linux and Mac OS uti
 
 ## How This Repository Works
 
-This repository uses GNU Stow along with a few custom shell scripts to automatically manage local configuration files (dotfiles) across various unix-like systems. Files are 'installed' to the proper location using symlinks so that you can track changes to all of the files easily in a single git repository.
+This repository uses GNU Stow along with a few custom shell scripts to automatically manage local configuration files (dotfiles) across various unix-like systems. Files are 'installed' to the proper location using symbolic links so that you can track changes to all of the files easily in a single git repository.
 
-Directories in the root of this repository are considered 'modules' in stow terminology. A module is the most granular unit of control when choosing which files are stowed on a given system. When a module is stowed, all files and directories inside it are symlinked to the current user's home folder. Files in different modules may have conflicting names, as long as they are never stowed simultaneously (see my `.zsh_dist` implementation).
+Each directory in the root of this repository is considered a 'module' in Stow terminology. A module is the most granular unit of control when deciding which files are included on a given system. When a module is stowed, the full directory tree inside the module is symlinked to the user's home folder. Files in different modules may have conflicting names, as long as both modules are never stowed simultaneously (some systems may use a different set of modules)
 
-To stow the appropriate files for your system, set the environment variable `DOTFILES_STOW_FOLDERS` to a comma-separated list of the modules you wish to install. Then, run the `install` script. If stow finds that any of the files already exist (e.g. your old zsh configuration), it will not overwrite them with the files from the repo. In this case, you should move the conflicting file elsewhere (`.zshrc -> .zshrc.bak`) and run the shell script again.
+To stow the appropriate files for your system, set the environment variable `DOTFILES_STOW_FOLDERS` to a comma-separated list of the modules you wish to install. Then, run the `install` script. If stow finds that any of the files already exist (e.g. your old zsh configuration), it will not overwrite them with the files from the repo. In this case, you should move the conflicting file elsewhere (e.g. `mv .zshrc .zshrc.bak`) and run the shell script again.
 
 If you clone this repo to any location other than `~/.dotfiles`, you will need to set the `DOTFILES` environment variable so that the shell scripts know how to find your modules.
 
@@ -63,7 +63,7 @@ If you clone this repo to any location other than `~/.dotfiles`, you will need t
 This is a basic overview of how to use the dotfiles repo. For a complete guide on system setup and configuration, see [SETUP.md](SETUP.md)
 
 1. Install any prerequisites (git, zsh, fzf, ripgrep, etc.)
-2. Create any top level config directories like `~/.local/` and `~/.config/` manually to prevent stow from adopting them directly.
+2. Create any top level config directories like `~/.local/` and `~/.config/` manually to prevent stow from attempting to symlink the entire thing.
 3. Clone this repo to `~/.dotfiles`
 4. Create and source the `~/.zsh_system` file that sets up your environment variables (including `DOTFILES_STOW_FOLDERS` and `DOTFILES` if required)
 5. Run the `./install` script to stow all of the selected modules. If any errors occur, correct them and run the script again.
