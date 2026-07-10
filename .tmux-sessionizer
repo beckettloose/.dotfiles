@@ -10,3 +10,4 @@ tmux-windowizer "nvim cfg" "nvim ."
 
 tmux-windowizer testing
 
+clear

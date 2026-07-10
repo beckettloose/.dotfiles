@@ -11,6 +11,7 @@ export EDITOR=$VIM
 export GIT_EDITOR=$VIM
 export KUBE_EDITOR=$VIM
 
+path=("$HOME/.local/tmux-sessionizer/bin" $path)
 path=("$HOME/.local/scripts/bin" $path)
 path=("$HOME/.local/bin" $path)
 export PATH

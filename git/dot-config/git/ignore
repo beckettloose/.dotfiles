@@ -2,3 +2,8 @@
 
 # MacOS
 .DS_Store
+
+# tmux sessionizer per-project config
+# we will ignore this by default, but it may be helpful to commit in rare cases,
+# which can be done with `git add --force`
+.tmux-sessionizer
