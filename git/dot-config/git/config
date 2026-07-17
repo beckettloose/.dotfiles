@@ -1,14 +1,3 @@
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-[credential "https://github.com"]
-    helper =
-    helper = !$(which gh) auth git-credential
-[credential "https://gist.github.com"]
-    helper =
-    helper = !$(which gh) auth git-credential
 [user]
     name = Beckett Loose
     email = beckettloose@me.com
@@ -40,6 +29,8 @@
 [oh-my-zsh]
     hide-dirty = 1
     max-branch-length = 25
+[include]
+    path = ~/.config/git/system-config
 [includeIf "gitdir:~/work/"]
     path = ~/work/.gitconfig
 

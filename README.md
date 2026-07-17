@@ -139,7 +139,9 @@ I have also chosen to disable some of the advice options as they clutter up the 
 
 Additionally, there are aliases for `git log` which print a prettified commit graph at 3 different verbosity levels. I still use this often even though I have lazygit, because it shows the entire history for all branches, tags, and stashes, not just the checked-out commit.
 
-The `[includeIf "gitdir:~/work/"]` section activates a secondary `.gitconfig` when the repository is inside of `~/work/`, and overrides `user.email`.
+There is also an `[include]` directive that allows me to provide system-specific config overrides in a separate file. This is useful for configuring filters or credential helpers.
+
+The `[includeIf "gitdir:~/work/"]` section activates another config override when the repository is inside of `~/work/` which changes `user.email`.
 
 ### LazyGit
 
