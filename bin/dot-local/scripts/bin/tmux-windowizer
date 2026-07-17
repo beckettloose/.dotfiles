@@ -8,6 +8,8 @@
 #
 # Originally written by ThePrimeagen but modified to fix quotation problems.
 
+set -euo pipefail
+
 branch_name=$(basename "$1")
 session_name=$(tmux display-message -p "#S")
 clean_name=$(echo "$branch_name" | tr "./" "__")
