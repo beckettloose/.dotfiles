@@ -15,11 +15,8 @@
 
 
 function _fzf-git-switch {
-    printf "\33[2K\r" # Clear the prompt line so prints are displayed better
-
     # make sure we are in a git repo
-    if ! git rev-parse --is-inside-work-tree > /dev/null; then
-        zle .reset-prompt
+    if ! git rev-parse --is-inside-work-tree &> /dev/null; then
         return
     fi
 
@@ -27,6 +24,8 @@ function _fzf-git-switch {
     typeset -aU branches # auto-deduplicate branch list
     fzf_label="Fuzzy Git Switch (Local Branches Only)"
 
+    # Clear the prompt line so prints are displayed better
+    printf "\33[2K\r"
     if [[ $1 = "all" ]]; then
         # override fzf label when searching all branches
         fzf_label="Fuzzy Git Switch (Include Remotes)"
@@ -45,14 +44,17 @@ function _fzf-git-switch {
         branches+=("$i")
     done
 
+    # let the user pick a branch with fzf
     choice=$(printf "%s\n" "${branches[@]}" | fzf --height 40% --layout reverse --border --border-label="${fzf_label}")
 
     if [[ -n "$choice" ]]; then
         if [[ $1 = "all" ]]; then
-            # Fetch any new branches from remotes. This is required because the
-            # remote query did not actually fetch those branches
+            # since we didn't actually fetch the new branch yet, we need to do
+            # that now.
             printf "fzf-git-switch: fetching from remotes\n"
-            git fetch
+            # NOTE: My use case can make the assumption that 'origin'
+            # is the correct remote.
+            git fetch origin "$choice"
         fi
         git switch "$choice"
         zle .reset-prompt

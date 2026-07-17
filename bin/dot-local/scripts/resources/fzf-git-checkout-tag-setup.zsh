@@ -11,36 +11,33 @@
 # fi
 
 function _fzf-git-checkout-tag {
-    printf "\33[2K\r" # Clear the prompt line so prints are displayed better
-
-    # make sure we are in a git repo
-    if ! git rev-parse --is-inside-work-tree > /dev/null; then
-        zle .reset-prompt
+    # exit if we aren't in a git repo
+    if ! git rev-parse --is-inside-work-tree &> /dev/null; then
         return
     fi
 
-    tags=()
-
-    # find all tags present locally. we won't fetch here to save performance
     fzf_label="Fuzzy Git Tag Checkout"
 
+    tags=()
+    # find all tags present locally. the user can fetch if they want remote tags
     for i in $(git tag --sort=-v:refname -n --list "${1}*" | awk '{print $1}'); do
         tags+=("$i")
     done
 
-    # exit if this repo doesn't have any tags
+    # exit if the repo doesn't have any tags
     if [ -z "$tags" ]; then
-        printf "\33[2K\r"
-        zle .reset-prompt
         return
     fi
 
+    printf "\33[2K\r" # clear the prompt line
+
+    # let the user pick a tag with fzf
     choice=$(printf "%s\n" "${tags[@]}" | fzf --height 40% --layout reverse --border --border-label="${fzf_label}")
 
     if [[ -n "$choice" ]]; then
         git checkout "refs/tags/${choice}"
         zle .reset-prompt
-        redraw_p10k_prompt # only required if HEAD changes
+        redraw_p10k_prompt # only required if HEAD changes (we actually checked out a tag)
         return
     else
         zle .reset-prompt
