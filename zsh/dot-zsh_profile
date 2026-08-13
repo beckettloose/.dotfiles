@@ -45,30 +45,11 @@ tdev() {
     else
         tmux_windows=$(tmux display-message -p '#{session_windows}')
         if [[ "$tmux_windows" -eq "1" ]]; then
-            tmux new-window -n "nvim"
-            tmux new-window -n "build"
-            tmux new-window
-            tmux select-window -t 1
+            tmux-windowizer "nvim" "nvim"
+            tmux-windowizer "build"
+            tmux-windowizer "test"
         else
             echo "fatal: session must have 1 window"
-        fi
-    fi
-}
-
-# set up tmux windows for working on dotfiles
-tdot() {
-    if [[ -z $TMUX ]]; then
-        echo "fatal: must be in tmux"
-    else
-        tmux_windows=$(tmux display-message -p '#{session_windows}')
-        tmux_session=$(tmux display-message -p '#{session_name}')
-        if [[ "$tmux_windows" -eq "1" && "$tmux_session" -eq "_dotfiles" ]]; then
-            tmux new-window -n "nvim"
-            tmux new-window -n "nvim cfg" -c "./nvim/dot-config/nvim/"
-            tmux new-window
-            tmux select-window -t 1
-        else
-            echo "fatal: must be in _dotfiles with 1 window"
         fi
     fi
 }
