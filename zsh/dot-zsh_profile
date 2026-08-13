@@ -36,6 +36,8 @@ alias tls="tmux list-sessions"
 alias ta="tmux attach"
 alias tcl="tmux clock-mode"
 
+alias y="yazi"
+
 # set up tmux windows for a basic development session
 tdev() {
     if [[ -z $TMUX ]]; then
