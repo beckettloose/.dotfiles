@@ -55,7 +55,7 @@ function _fzf-ssh {
     elif [[ -L $FUZZY_SSH_CONFIG_FILE ]]; then
         :
     else
-        echo "\nfatal: specified config file does not exist!"
+        echo "fatal: specified config file does not exist!\n"
         zle .reset-prompt
         return
     fi
