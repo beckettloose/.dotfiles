@@ -110,7 +110,7 @@ I don't really remember what I changed in this config other than switching the b
 
 The `alacritty` module contains the configuration file for the Alacritty terminal emulator, along with a Tokyo Night color scheme.
 
-I think I had a weird crashing issue with Wezterm related to Nvidia drivers or Wayland so I have been using Alacritty in the meantime until that is patched (which it might be already). The very basic configuration sets the following options:
+I think I had a weird crashing issue with Wezterm related to Nvidia drivers or Wayland so I was using Alacritty in the meantime until that got patched (it was fixed in Wezterm, but I was using the flatpak that hasn't been updated since Feb. 2024). The very basic configuration sets the following options:
 
 - Tokyo Night color scheme
 - 110x28 default window size
@@ -195,19 +195,21 @@ The `tmux` module contains my tmux configuration file. This used to be a much mo
 
 ### Wezterm
 
-The `wezterm` module contains my Wezterm configuration file. My wezterm configuration is relatively simple and has the following parameters:
+The `wezterm` module contains my Wezterm configuration file. My Wezterm configuration is relatively simple and accomplishes the following:
 
-- `80x20` initial window size
+- Initial window size of 80 by 20
 - Default font size of 14
 - Tokyo Night color scheme
 - No window padding
-- Fixed window size increments
-- Disable tab bar
-- Disable all default key bindings
-- Re-enable basic keybinds
+- Incremental window size (1 line/character at a time)
+- Disable tab bar (since I primarily use tmux for tabs/sessions)
+- Disable all default key bindings except:
     - Copy/paste
     - Debug overlay
     - Command palette
+    - Character selector
+- Only open hyperlinks on control click
+- Increase contrast in the command palette and character selector
 
 ### Behringer XR18
 

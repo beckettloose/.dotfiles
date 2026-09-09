@@ -65,7 +65,13 @@ config.keys = {
         key = 'p',
         mods = "CTRL|SHIFT",
         action = wezterm.action.ActivateCommandPalette
-    }
+    },
+    -- character selector
+    {
+        key = 'u',
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.CharSelect
+    },
 }
 
 config.mouse_bindings = {
@@ -88,6 +94,9 @@ config.mouse_bindings = {
         action = wezterm.action.Nop,
     },
 }
+
+config.command_palette_bg_color = "#202020"
+config.char_select_bg_color = "#202020"
 
 -- Finally, return the configuration to wezterm:
 return config
