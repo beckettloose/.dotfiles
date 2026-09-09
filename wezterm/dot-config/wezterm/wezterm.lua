@@ -68,5 +68,26 @@ config.keys = {
     }
 }
 
+config.mouse_bindings = {
+    -- Use Left Click for primary selection only, disables opening links
+    {
+        event = { Up = { streak = 1, button = "Left"} },
+        mods = "NONE",
+        action = wezterm.action.CompleteSelection 'PrimarySelection',
+    },
+    -- Use Ctrl-Click Up to open links
+    {
+        event = { Up = { streak = 1, button = "Left"} },
+        mods = "CTRL",
+        action = wezterm.action.OpenLinkAtMouseCursor,
+    },
+    -- Disable Ctrl-Click Down event
+    {
+        event = { Down = { streak=1, button = "Left"} },
+        mods = "CTRL",
+        action = wezterm.action.Nop,
+    },
+}
+
 -- Finally, return the configuration to wezterm:
 return config
