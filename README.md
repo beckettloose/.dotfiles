@@ -81,7 +81,6 @@ Below is a high-level overview of each module in this repository.
 - `lazygit`: Configuration for LazyGit
 - `nvim`: My Neovim configuration
 - `p10k`: Custom Powerlevel10k configuration
-- `pulseaudio`: (deprecated) Custom pulseaudio config for my Behringer XR18 for systems running PulseAudio
 - `tmux`: My tmux configuration (as a submodule)
 - `wezterm`: My basic wezterm configuration
 - `xr18`: Custom pipewire and wireplumber configuration for my Behringer XR18
@@ -171,10 +170,6 @@ The `p10k` module contains the `~/.p10k.zsh` file used to configure [powerlevel1
 - Replace the regular prompt icon and VCS branch icon with nerd font symbols
 - Replace the Vi mode prompt characters to N, V, and R to match editor mode
 - Change the VCS untracked symbol from `?` to `U`
-
-### PulseAudio
-
-The `pulseaudio` module contains a special configuration for PulseAudio specific to my Linux desktop PC, and is intended to interface with my Behringer XR18 mixer. The mixer presents itself as a single ~18 channel bidirectional device, so this handles the creation of virtual sinks and sources that map to mono channels or stereo pairs on the main device. I can then use `pavucontrol` to route individual apps to different mixer channels. Note that this module is deprecated as I have switched to Fedora KDE which uses PipeWire and Wireplumber for audio.
 
 ### Tmux
 
