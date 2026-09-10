@@ -5,5 +5,5 @@
 # Platform Specific ZSH Configuration File
 
 # Create alias for clearing dns cache
-alias dnsflush="sudo resolvectl flush-caches"
+alias flushdns="sudo resolvectl flush-caches"
 

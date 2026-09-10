@@ -17,4 +17,4 @@ if type brew &>/dev/null; then
     fi
 fi
 
-alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
